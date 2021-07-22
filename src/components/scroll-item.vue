@@ -3,13 +3,13 @@
     <!-- 文字显示 -->
     <div class="scroll-text">
       <p>
-        欢迎乘坐北京地铁，天气信息+指示（雨天+地面湿滑，出乘请注意，避免滑倒摔伤），冬奥专题：冬奥时间、冬奥奖牌榜、冬奥赛程
+        欢迎乘坐北京地铁十一号线 欢迎乘坐北京地铁十一号线
+        欢迎乘坐北京地铁十一号线
       </p>
     </div>
     <!-- 轮播成功进站显示 -->
     <div class="scroll-status">
       <div>
-        <p>进站</p>
         <div class="passenger-img"></div>
       </div>
     </div>
@@ -51,7 +51,7 @@ export default defineComponent({
 }
 .scroll-text {
   position: absolute;
-  animation: 20s scrolltext linear infinite;
+  animation: 10s scrolltext linear infinite;
   p {
     line-height: 200px;
     font-size: 60px;
@@ -60,10 +60,10 @@ export default defineComponent({
 }
 @keyframes scrolltext {
   0% {
-    left: 3200px;
+    left: 2560px;
   }
   100% {
-    left: -3200px;
+    left: -640px;
   }
 }
 </style>

@@ -6,10 +6,15 @@
     </div>
     <div class="screen-content">
       <div class="station-title-box">
-        <p class="station-title-cn">金安桥</p>
-        <P class="station-title-en">JIN'ANQIAO</P>
+        <img class="tag-img" src="../assets/tag.png" alt="" />
+        <span class="tag-box">
+          <p class="station-title-cn">金安桥</p>
+          <P class="station-title-en">JIN'ANQIAO</P>
+        </span>
       </div>
-      <div class="station-img-box"></div>
+      <div class="station-img-box">
+        <img class="map-img" src="../assets/map-3.png" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -26,4 +31,16 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 @import '../theme/index.less';
+.tag-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+.tag-box {
+  display: inline-block;
+  vertical-align: middle;
+}
+.station-title-box {
+  padding-top: 90px;
+}
 </style>

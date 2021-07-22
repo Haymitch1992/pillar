@@ -1,6 +1,10 @@
 @color-container:#17172c;
 @color-background:#000000;
-
+.map-img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .screen-content {
   height: 940px;
   background: @color-background;
@@ -15,7 +19,6 @@
     height: 300px;
     border-radius: 10px;
     box-sizing: border-box;
-    padding-top:90px;
     p{
       color: #fff;
       text-align: center;
@@ -40,12 +43,12 @@
   text-align: center;
   height: 300px;
   box-sizing: border-box;
-  background: @color-background;
   display: flex;
   align-items: center; //子元素垂直居中
   flex-direction: column;
   justify-content:center;
   flex-wrap: nowrap;
+  background: @color-background url('../assets/bg.png') no-repeat 0px 180px;
   
   .guidance{
       height: 110px;
@@ -86,7 +89,6 @@
   .station-img{
     display: inline-block;
     vertical-align: middle;
-    border: 4px solid #fff;
     border-radius: 14px;
   }
 }

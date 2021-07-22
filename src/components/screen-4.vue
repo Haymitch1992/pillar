@@ -7,7 +7,9 @@
       <div class="station-title-box">
         <pis></pis>
       </div>
-      <div class="station-img-box"></div>
+      <div class="station-img-box">
+        <img class="map-img" src="../assets/map-2.png" alt="" />
+      </div>
     </div>
   </div>
 </template>

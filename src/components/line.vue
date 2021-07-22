@@ -1,5 +1,7 @@
 <template>
   <div class="line-box">
+    <img class="line-arrow-1" src="../assets/line-arrow-1.png" alt="" />
+    <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" />
     <!-- 站台 -->
     <div class="station-box">
       <div class="station">
@@ -38,7 +40,7 @@
     </div>
     <!-- 站牌 -->
     <div class="sign">
-      <img src="../assets/arrow-left.png" alt="" />
+      <img src="../assets/arrow-left-top.png" alt="" />
       <div class="sign-bottom">
         <p>2分钟</p>
         <P>2Min</P>
@@ -47,7 +49,7 @@
       </div>
     </div>
     <div class="sign sign-2">
-      <img src="../assets/arrow-right.png" alt="" />
+      <img src="../assets/arrow-right-top.png" alt="" />
       <div class="sign-bottom">
         <p>2分钟</p>
         <P>2Min</P>
@@ -66,7 +68,7 @@
   width: 200px;
   position: absolute;
   left: 210px;
-  top: 70px;
+  top: 110px;
 }
 .station {
   border: 2px solid #fff;
@@ -85,16 +87,16 @@
 .kuai {
   position: absolute;
   left: 150px;
-  top: 100px;
+  top: 140px;
 }
 .man {
   position: absolute;
   right: 150px;
-  top: 100px;
+  top: 140px;
 }
 .line {
   width: 18px;
-  height: 700px;
+  height: 800px;
   position: relative;
   span {
     width: 30px;
@@ -149,7 +151,7 @@
   }
   .station-4 {
     position: absolute;
-    bottom: -10px;
+    bottom: 100px;
     left: -10px;
   }
 }
@@ -168,7 +170,7 @@
   background: #0070ac;
   position: absolute;
   text-align: left;
-  top: 280px;
+  top: 320px;
   left: 40px;
 
   img {
@@ -210,5 +212,15 @@
 .sign-2 {
   left: 500px;
   background: #c69000;
+}
+.line-arrow-1 {
+  position: absolute;
+  top: 50px;
+  left: 140px;
+}
+.line-arrow-2 {
+  position: absolute;
+  top: 50px;
+  right: 140px;
 }
 </style>
