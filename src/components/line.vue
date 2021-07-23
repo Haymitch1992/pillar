@@ -96,7 +96,7 @@
 }
 .line {
   width: 18px;
-  height: 800px;
+  height: 700px;
   position: relative;
   span {
     width: 30px;
@@ -151,7 +151,7 @@
   }
   .station-4 {
     position: absolute;
-    bottom: 100px;
+    bottom: -10px;
     left: -10px;
   }
 }

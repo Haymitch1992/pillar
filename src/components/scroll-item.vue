@@ -2,10 +2,7 @@
   <div class="scroll-item">
     <!-- 文字显示 -->
     <div class="scroll-text">
-      <p>
-        欢迎乘坐北京地铁十一号线 欢迎乘坐北京地铁十一号线
-        欢迎乘坐北京地铁十一号线
-      </p>
+      <p>欢迎乘坐北京地铁十一号线 欢迎乘坐北京地铁十一号线</p>
     </div>
     <!-- 轮播成功进站显示 -->
     <div class="scroll-status">
@@ -63,7 +60,7 @@ export default defineComponent({
     left: 2560px;
   }
   100% {
-    left: -640px;
+    left: -1280px;
   }
 }
 </style>

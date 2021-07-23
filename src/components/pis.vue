@@ -35,6 +35,8 @@
     <div class="car-status">
       <img src="../assets/car-1.png" alt="" />
       <img src="../assets/car-2.png" alt="" />
+      <img class="per-1" src="../assets/person-2.png" alt="" />
+      <img class="per-2" src="../assets/person.png" alt="" />
     </div>
     <div class="car-info">
       <span class="fl-info">
@@ -54,7 +56,7 @@ export default defineComponent({
   name: 'pis',
   setup() {
     const data = reactive({
-      direction: '金顶街',
+      direction: '首钢',
       carType: '快车'
     });
     return {
@@ -101,14 +103,14 @@ export default defineComponent({
   .pis-line {
     text-align: center;
     width: 100%;
-    font-size: 26px;
+    font-size: 20px;
     padding-bottom: 20px;
     span {
       display: inline-block;
       vertical-align: middle;
     }
     .en {
-      font-size: 18px;
+      font-size: 16px;
     }
     margin-top: 20px;
     img {
@@ -120,6 +122,7 @@ export default defineComponent({
   .car-status {
     text-align: center;
     padding-bottom: 30px;
+    position: relative;
   }
   .tips-line {
     padding-top: 10px;
@@ -127,6 +130,16 @@ export default defineComponent({
   .tips {
     margin-left: 280px;
     font-size: 20px;
+  }
+  .per-1 {
+    position: absolute;
+    bottom: 40px;
+    left: 220px;
+  }
+  .per-2 {
+    position: absolute;
+    bottom: 40px;
+    left: 350px;
   }
 }
 </style>
