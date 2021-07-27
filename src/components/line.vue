@@ -4,38 +4,36 @@
     <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" />
     <!-- 站台 -->
     <div class="station-box">
-      <div class="station">
-        <p>金顶街</p>
-        <p class="en">JINDINGJIE</p>
-      </div>
-      <div class="station">
-        <p>金安桥</p>
-        <p class="en">JINANQIAO</p>
-      </div>
-      <div class="station">
-        <p>北辛安</p>
-        <p class="en">BEIXINAN</p>
-      </div>
-      <div class="station">
-        <p>首钢</p>
-        <p class="en">SHOUGANG</p>
+      <div class="station" v-for="item in lineInfo" :key="item.station_id">
+        <p>{{ item.cn_name }}</p>
+        <p class="en">{{ item.en_name }}</p>
       </div>
     </div>
 
     <!-- 线路 -->
     <div class="line-box kuai">
       <div class="line line-1">
-        <span class="station-1"></span>
-        <span class="station-2"></span>
-        <span class="station-4 active"></span>
+        <span
+          :class="[
+            'station-' + index,
+            item.station_id === $store.state.station ? 'active' : ''
+          ]"
+          v-for="(item, index) in lineInfo"
+          :key="item.station_id"
+        ></span>
       </div>
     </div>
+
     <div class="line-box man">
       <div class="line line-2">
-        <span class="station-1"></span>
-        <span class="station-2"></span>
-        <span class="station-3"></span>
-        <span class="station-4 active"></span>
+        <span
+          :class="[
+            'station-' + index,
+            item.station_id === $store.state.station ? 'active' : ''
+          ]"
+          v-for="(item, index) in lineInfo"
+          :key="item.station_id"
+        ></span>
       </div>
     </div>
     <!-- 站牌 -->
@@ -60,6 +58,28 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'line',
+  data() {
+    return {};
+  },
+  computed: {
+    lineInfo() {
+      // 获取上下行
+      let lineObj = [];
+      if (this.$store.state.direction === 1) {
+        // 下行
+        lineObj = this.$store.state.stationInfo.down;
+      } else {
+        // 上行
+        lineObj = this.$store.state.stationInfo.up;
+      }
+      return lineObj;
+    }
+  }
+};
+</script>
 <style lang="less" scoped>
 .line-box {
   position: relative;
@@ -134,22 +154,22 @@
     }
   }
 
-  .station-1 {
+  .station-0 {
     position: absolute;
     top: -10px;
     left: -10px;
   }
-  .station-2 {
+  .station-1 {
     position: absolute;
     top: 220px;
     left: -10px;
   }
-  .station-3 {
+  .station-2 {
     position: absolute;
     top: 440px;
     left: -10px;
   }
-  .station-4 {
+  .station-3 {
     position: absolute;
     bottom: -10px;
     left: -10px;

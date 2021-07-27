@@ -3,10 +3,10 @@
     <div class="pis-top">
       <span>
         开往
-        <span class="current">{{ data.direction }}</span>
+        <span class="current">{{ direction }}</span>
         方向
       </span>
-      <span class="kauiche">{{ data.carType }}</span>
+      <span class="kauiche">{{ carType }}</span>
     </div>
     <div class="tips-line">
       <span class="current tips">本次列车不停靠</span>
@@ -41,29 +41,41 @@
     <div class="car-info">
       <span class="fl-info">
         <img src="../assets/arrow-2.png" alt="" />
-        1-2号车门未普通列车停靠点
+        3-4号车门为快车停靠点
       </span>
       <span class="fr-info">
-        3-4号车门未快车停靠点
+        1-2号车门为普通列车停靠点
         <img src="../assets/arrow-1.png" alt="" />
       </span>
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, reactive } from 'vue';
-export default defineComponent({
+<script>
+export default {
   name: 'pis',
-  setup() {
-    const data = reactive({
-      direction: '首钢',
-      carType: '快车'
-    });
+  data() {
     return {
-      data
+      carType: '快车'
     };
+  },
+  computed: {
+    direction() {
+      return this.$store.state.direction ? '首钢' : '金顶街';
+    },
+    lineInfo() {
+      // 获取上下行
+      let lineObj = [];
+      if (this.$store.state.direction === 1) {
+        // 下行
+        lineObj = this.$store.state.stationInfo.down;
+      } else {
+        // 上行
+        lineObj = this.$store.state.stationInfo.up;
+      }
+      return lineObj;
+    }
   }
-});
+};
 </script>
 
 <style lang="less" scoped>

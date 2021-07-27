@@ -8,13 +8,13 @@
         <pis></pis>
       </div>
       <div class="station-img-box">
-        <img class="map-img" src="../assets/map-1.png" alt="" />
+        <img class="map-img" src="../assets/map-3.png" alt="" />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import guidance from '../components/guidance2.vue';
+import guidance from '../components/guidance4.vue';
 import pis from '../components/pis.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({

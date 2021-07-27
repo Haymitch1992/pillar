@@ -7,7 +7,7 @@
     <img class="station-img" src="../assets/zhan-3.png" alt="" />
     <span class="text-info">
       <p class="text-info-cn">卫生间</p>
-      <p class="text-info-en">Tolit</p>
+      <p class="text-info-en">Toilet</p>
     </span>
   </div>
 </template>

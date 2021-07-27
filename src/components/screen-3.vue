@@ -13,7 +13,7 @@
         </span>
       </div>
       <div class="station-img-box">
-        <img class="map-img" src="../assets/map-3.png" alt="" />
+        <img class="map-img" src="../assets/map-1.png" alt="" />
       </div>
     </div>
   </div>

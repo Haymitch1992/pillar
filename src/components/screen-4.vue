@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import pis from '../components/pis.vue';
-import guidance from '../components/guidance4.vue';
+import guidance from '../components/guidance2.vue';
 export default defineComponent({
   name: 'screen4',
   components: {

@@ -3,8 +3,7 @@
 // const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_BASE_URL : API_PROXY_PREFIX
 const BASE_URL = process.env.VUE_APP_API_BASE_URL
 module.exports = {
-  LOGIN: `${BASE_URL}/login`,
-
-  starLinkLogin: '/api/v1/web/platform_auth/login', // 星链登录
-
+  STATIONINFO: `/api/v1/device/platform_ats/station_info`,// 车站信息查询
+  TRAININFO: `/api/v1/device/platform_ats/train_info`, // 车辆信息查询
+  PERCEPTIONALARM: `/api/v1/device/platform_ips/perception_alarm` // 车站感知数据
 }
