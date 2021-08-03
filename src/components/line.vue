@@ -16,7 +16,7 @@
         <span
           :class="[
             'station-' + index,
-            item.station_id === $store.state.station ? 'active' : ''
+            item.station_id == $store.state.station ? 'active' : ''
           ]"
           v-for="(item, index) in lineInfo"
           :key="item.station_id"
@@ -29,7 +29,7 @@
         <span
           :class="[
             'station-' + index,
-            item.station_id === $store.state.station ? 'active' : ''
+            item.station_id == $store.state.station ? 'active' : ''
           ]"
           v-for="(item, index) in lineInfo"
           :key="item.station_id"
@@ -68,14 +68,20 @@ export default {
     lineInfo() {
       // 获取上下行
       let lineObj = [];
-      if (this.$store.state.direction === 1) {
+      let returnObj = [];
+      if (this.$store.state.direction == 1) {
         // 下行
         lineObj = this.$store.state.stationInfo.down;
       } else {
         // 上行
         lineObj = this.$store.state.stationInfo.up;
       }
-      return lineObj;
+      console.log(lineObj.length);
+      for (var n = lineObj.length - 1; n >= 0; n--) {
+        returnObj.push(lineObj[n]);
+      }
+      console.log(returnObj);
+      return returnObj;
     }
   }
 };

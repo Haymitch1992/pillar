@@ -16,6 +16,15 @@ module.exports = {
                   "^/api": '/api'
               }
           },
+          '/renwen': {//代理api
+            //target: "http://192.168.62.228:9092",//测试api地址
+            target:'http://172.51.215.159:8086',
+            changeOrigin: true,//是否跨域
+            ws: true, // proxy websockets
+            pathRewrite: {//重写路径
+                "^/renwen": '/api'
+            }
+        },
       }
   }
 }

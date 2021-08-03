@@ -2,7 +2,11 @@
   <div class="box">websocket</div>
 </template>
 <script>
-import { GETSTAIONINFO, GETTRAININFO } from '../services/user';
+import {
+  GETSTAIONINFO,
+  GETTRAININFO,
+  GETPERCEPTIONALARM
+} from '../services/user';
 import { mapMutations } from 'vuex';
 const heartCheck = {
   timeout: 60 * 1000,
@@ -42,7 +46,12 @@ export default {
     this.getInfo();
   },
   methods: {
-    ...mapMutations(['setStationInfo']),
+    ...mapMutations([
+      'setStationInfo',
+      'setAlterInfo',
+      'setDirection',
+      'setStation'
+    ]),
     getInfo() {
       GETSTAIONINFO().then((res) => {
         console.log(res);
@@ -55,6 +64,13 @@ export default {
       });
       GETTRAININFO(1, 1).then((res) => {
         console.log(res);
+      });
+      GETPERCEPTIONALARM(1, 2).then((res) => {
+        console.log(res);
+        // 有数据
+        if (res.data.result) {
+          this.setAlterInfo(res.data.result.abnormal_info);
+        }
       });
     },
     reconnect() {
@@ -94,8 +110,12 @@ export default {
     },
     websocketonmessage(e) {
       // console.log(e)
-      console.log('得到响应', e.data);
-      console.log('可以渲染网页数据...');
+      // console.log('得到响应', e.data);
+      // 将数据进行切割
+      let arr = e.data.split('|');
+      this.setDirection(arr[1]);
+      this.setStation(arr[0]);
+      // console.log('可以渲染网页数据...');
       // 消息获取成功，重置心跳
       heartCheck.start(this.socket);
     },

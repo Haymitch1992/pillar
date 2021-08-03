@@ -12,25 +12,20 @@
       <span class="current tips">本次列车不停靠</span>
     </div>
     <div class="pis-line">
-      <span>
-        <p>金顶街</p>
-        <p class="en">JINDINGJIE</p>
-      </span>
-      <img src="../assets/next-1.png" alt="" />
-      <span>
-        <p>金安桥</p>
-        <p class="en">JINANQIAO</p>
-      </span>
-      <img src="../assets/next-1.png" alt="" />
-      <span>
-        <p>北辛安路</p>
-        <p class="en">BEIXINANLU</p>
-      </span>
-      <img src="../assets/next-1.png" alt="" />
-      <span>
-        <p>首钢</p>
-        <p class="en">SHOUGANG</p>
-      </span>
+      <i v-for="(item, index) in lineInfo" :key="item.station_id">
+        <span
+          :class="item.station_id == $store.state.station ? 'active' : ''"
+          :title="item.station_id"
+        >
+          <p>{{ item.cn_name }}</p>
+          <p class="en">{{ item.en_name }}</p>
+        </span>
+        <img
+          v-if="index < lineInfo.length - 1"
+          src="../assets/next-1.png"
+          alt=""
+        />
+      </i>
     </div>
     <div class="car-status">
       <img src="../assets/car-1.png" alt="" />
@@ -60,18 +55,19 @@ export default {
   },
   computed: {
     direction() {
-      return this.$store.state.direction ? '首钢' : '金顶街';
+      return this.$store.state.direction == 1 ? '首钢' : '金顶街';
     },
     lineInfo() {
       // 获取上下行
       let lineObj = [];
-      if (this.$store.state.direction === 1) {
+      if (this.$store.state.direction == 1) {
         // 下行
         lineObj = this.$store.state.stationInfo.down;
       } else {
         // 上行
         lineObj = this.$store.state.stationInfo.up;
       }
+
       return lineObj;
     }
   }
@@ -79,8 +75,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.active {
+  color: #fff;
+  p {
+    font-size: 30px;
+  }
+}
 .pis {
-  color: #ffff;
+  color: #fff;
   text-align: left;
   padding: 20px;
   font-size: 24px;
@@ -117,6 +119,9 @@ export default {
     width: 100%;
     font-size: 20px;
     padding-bottom: 20px;
+    i {
+      font-style: normal;
+    }
     span {
       display: inline-block;
       vertical-align: middle;
