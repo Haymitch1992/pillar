@@ -6,34 +6,35 @@
   height: 100%;
 }
 .screen-content {
-  height: 940px;
+  height: 682px;
   background: @color-background;
-  padding: 0 10px 0;
+  padding: 0 5px 0;
   .content-box{
-    height: 940px;
+    height: 682px;
     background: @color-container;
     border-radius: 10px;
   }
   .station-title-box{
     background: @color-container;
-    height: 300px;
+    height: 258px;
     border-radius: 10px;
     box-sizing: border-box;
+    overflow: hidden;
     p{
       color: #fff;
       text-align: center;
     }
     .station-title-cn{
-      font-size: 64px;
+      font-size: 44px;
     }
     .station-title-en{
-      font-size: 34px;
+      font-size: 24px;
     }
   }
   .station-img-box{
     background: @color-container;
-    margin: 20px auto 0;
-    height: 620px;
+    margin: 10px auto 0;
+    height: 414px;
     border-radius: 10px;
   }
 }
@@ -41,24 +42,24 @@
   color: #fff;
   font-size: 40px;
   text-align: center;
-  height: 300px;
+  height: 200px;
   box-sizing: border-box;
   display: flex;
   align-items: center; //子元素垂直居中
   flex-direction: column;
   justify-content:center;
   flex-wrap: nowrap;
-  background: @color-background url('../assets/bg.png') no-repeat 0px 180px;
+  background: @color-background url('../assets/bg.png') no-repeat 0px 90px;
   
   .guidance{
-      height: 110px;
+      height: 80px;
       width: 100%;
-      
   }
   span{
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px;
+    font-size: 36px;
   }
   p{
     text-align: left;
@@ -67,17 +68,17 @@
     width: 130px;
     display: inline-block;
   }
-  .text-info-en{
-    font-size: 60px;
+  .text-info-cn{
+    font-size: 36px;
   }
   .text-info-en{
-    font-size: 30px;
+    font-size: 20px;
   }
   img{
     margin: 0 4px;
   }
   .arrow-img{
-    width: 60px;
+    width: 50px;
     display: inline-block;
     vertical-align: middle;
   }
@@ -90,5 +91,6 @@
     display: inline-block;
     vertical-align: middle;
     border-radius: 14px;
+    width: 74px;
   }
 }

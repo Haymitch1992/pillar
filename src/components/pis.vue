@@ -85,17 +85,17 @@ export default {
   color: #fff;
   text-align: left;
   padding: 20px;
-  font-size: 24px;
+  font-size: 20px;
   .fl-info {
     float: left;
-    font-size: 20px;
+    font-size: 16px;
     img {
       margin: 0 4px;
     }
   }
   .fr-info {
     float: right;
-    font-size: 20px;
+    font-size: 16px;
     img {
       margin: 0 4px;
     }
@@ -109,7 +109,8 @@ export default {
     color: #fff;
     display: block;
     border-radius: 10px;
-    line-height: 40px;
+    line-height: 34px;
+    font-size: 20px;
     float: right;
     width: 100px;
     text-align: center;
@@ -119,6 +120,7 @@ export default {
     width: 100%;
     font-size: 20px;
     padding-bottom: 20px;
+    margin-top: 10px !important;
     i {
       font-style: normal;
     }
@@ -138,24 +140,24 @@ export default {
   }
   .car-status {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     position: relative;
   }
   .tips-line {
     padding-top: 10px;
   }
   .tips {
-    margin-left: 280px;
-    font-size: 20px;
+    margin-left: 306px;
+    font-size: 16px;
   }
   .per-1 {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 220px;
   }
   .per-2 {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 350px;
   }
 }

@@ -4,11 +4,7 @@
     <div class="scroll-box" ref="scrollBox">
       <div class="scroll-text" v-if="showText">
         <!-- <p>{{ $store.state.alertInfo }}</p> -->
-        <div
-          class="alert-item"
-          v-for="(item, index) in $store.state.alertInfo"
-          :key="index"
-        >
+        <div class="alert-item" v-for="(item, index) in ceshi" :key="index">
           <p class="alert-text">{{ item.status }}</p>
           <img :src="item.image_url" />
         </div>
@@ -25,16 +21,24 @@
         </div>
       </div>
       <div class="scroll-text" v-if="!showText">
-        <p>欢迎乘坐北京地铁11号线 Welcome to BeiJing Subway Line 11</p>
+        <p>
+          {{ base_info.cn }}
+          {{ base_info.en }}
+        </p>
       </div>
       <div class="scroll-text" v-if="!showText">
-        <p>欢迎乘坐北京地铁11号线 Welcome to BeiJing Subway Line 11</p>
+        <p>
+          {{ base_info.cn }}
+          {{ base_info.en }}
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import alertImg from '../assets/alert-1.png';
+import { GETHOTSPOTINFO } from '../services/user';
 export default {
   name: 'screen1',
   // 声明周期
@@ -42,16 +46,47 @@ export default {
     return {
       timer: {},
       num: 0,
-      showText: false
+      showText: false,
+      base_info: {
+        cn: '',
+        en: ''
+      },
+      ceshi: [
+        {
+          image_url: alertImg,
+          status: '进站'
+        },
+        {
+          image_url: alertImg,
+          status: '进站'
+        },
+        {
+          image_url: alertImg,
+          status: '进站'
+        },
+        {
+          image_url: alertImg,
+          status: '进站'
+        },
+        {
+          image_url: alertImg,
+          status: '进站'
+        }
+      ],
+      timer2: '',
+      timeLength: 60000
     };
   },
   watch: {
-    '$store.state.alertInfo'(v1, v2) {
+    '$store.state.alertInfo'() {
       // 监听 告警信息发生变化
       this.changStatus();
     }
   },
   methods: {
+    getHotSpotInfo() {
+      GETHOTSPOTINFO().then(this.afterGetInfo);
+    },
     changStatus() {
       this.num = 0;
       this.showText = true;
@@ -74,10 +109,21 @@ export default {
         }
         boxDom.style.left = this.num + 'px';
       }, 20);
+    },
+    afterGetInfo(res) {
+      if (res.data.code === 200) {
+        this.base_info = res.data.result[0].base_info;
+      }
     }
   },
   mounted() {
     this.start();
+    this.getHotSpotInfo();
+    clearInterval(this.timer2);
+    // 每隔一定周期 更新一下数据
+    this.timer2 = setInterval(() => {
+      this.getHotSpotInfo();
+    }, this.timeLength);
   }
 };
 </script>
@@ -86,28 +132,28 @@ export default {
 .alert-item {
   width: 150px;
   display: inline-block;
-  height: 200px;
+  height: 140px;
   margin: 0 5px 0 5px;
   .alert-text {
-    height: 60px;
+    height: 40px;
     color: #fff;
-    font-size: 26px;
+    font-size: 20px;
     display: block;
     width: 150px;
-    line-height: 60px;
+    line-height: 40px;
     text-align: center;
   }
   img {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 6px;
-    margin-left: 20px;
+    margin-left: 30px;
   }
 }
 @import '../theme/index.less';
 .scroll-item {
-  height: 200px;
+  height: 140px;
   width: 2560px;
   position: absolute;
   left: 0;
@@ -126,8 +172,8 @@ export default {
   text-align: left;
   float: left;
   p {
-    font-size: 50px;
-    line-height: 200px;
+    font-size: 36px;
+    line-height: 140px;
   }
 }
 @keyframes scrolltext {

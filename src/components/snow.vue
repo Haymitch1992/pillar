@@ -15,7 +15,7 @@
   width: 2560px;
   position: fixed;
   top: 0;
-  height: 300px;
+  height: 200px;
   // height: 1440px;
   background: url('../assets/snow1.png'), url('../assets/snow2.png');
   animation: 10s snow linear infinite;

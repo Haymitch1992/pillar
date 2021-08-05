@@ -1,9 +1,10 @@
 import {
   TRAININFO,
   STATIONINFO,
-  PERCEPTIONALARM
+  PERCEPTIONALARM,
+  HOTSPOTINFO
 } from '@/services/api'
-import {request, METHOD, removeAuthorization} from '@/utils/request'
+import {request, METHOD} from '@/utils/request'
 
 /**
  * 车站感知数据
@@ -41,10 +42,19 @@ export async function GETSTAIONINFO(direction) {
       direction:direction
     })
 }
+/**
+ * 车站信息
+ * @param direction 0上行，1下行
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+ export async function GETHOTSPOTINFO() {
+  return request(HOTSPOTINFO, METHOD.GET)
+}
 
 
 export default {
   GETTRAININFO,
   GETSTAIONINFO,
-  GETPERCEPTIONALARM
+  GETPERCEPTIONALARM,
+  GETHOTSPOTINFO
 }

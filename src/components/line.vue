@@ -4,7 +4,12 @@
     <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" />
     <!-- 站台 -->
     <div class="station-box">
-      <div class="station" v-for="item in lineInfo" :key="item.station_id">
+      <div
+        class="station"
+        v-for="item in lineInfo"
+        :key="item.station_id"
+        :class="item.station_id == $store.state.station ? 'active' : ''"
+      >
         <p>{{ item.cn_name }}</p>
         <p class="en">{{ item.en_name }}</p>
       </div>
@@ -90,39 +95,48 @@ export default {
 .line-box {
   position: relative;
 }
-.station-box {
-  width: 200px;
-  position: absolute;
-  left: 210px;
-  top: 110px;
-}
+
 .station {
   border: 2px solid #fff;
   text-align: center;
   border-radius: 10px;
   display: inline-block;
   width: 200px;
-  font-size: 36px;
+  font-size: 30px;
   padding: 4px 0;
   color: #fff;
-  margin-bottom: 140px;
+  margin-bottom: 80px;
   .en {
-    font-size: 24px;
+    font-size: 20px;
+  }
+}
+.station-box {
+  width: 200px;
+  position: absolute;
+  left: 210px;
+  top: 110px;
+  .station.active {
+    p {
+      font-weight: bold;
+    }
+    .en {
+      font-size: 24px;
+    }
   }
 }
 .kuai {
   position: absolute;
   left: 150px;
-  top: 140px;
+  top: 130px;
 }
 .man {
   position: absolute;
   right: 150px;
-  top: 140px;
+  top: 130px;
 }
 .line {
   width: 18px;
-  height: 700px;
+  height: 500px;
   position: relative;
   span {
     width: 30px;
@@ -167,12 +181,12 @@ export default {
   }
   .station-1 {
     position: absolute;
-    top: 220px;
+    top: 150px;
     left: -10px;
   }
   .station-2 {
     position: absolute;
-    top: 440px;
+    top: 310px;
     left: -10px;
   }
   .station-3 {
@@ -196,9 +210,8 @@ export default {
   background: #0070ac;
   position: absolute;
   text-align: left;
-  top: 320px;
+  top: 220px;
   left: 40px;
-
   img {
     display: block;
     width: 80%;
@@ -236,7 +249,7 @@ export default {
   }
 }
 .sign-2 {
-  left: 500px;
+  left: 520px;
   background: #c69000;
 }
 .line-arrow-1 {

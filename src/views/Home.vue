@@ -36,14 +36,14 @@ export default defineComponent({
 <style lang="less" scoped>
 .home {
   width: 2560px;
-  height: 1440px;
+  height: 1024px;
   display: flex;
   position: relative;
   box-sizing: border-box;
   .item {
     width: 640px;
-    border: 1px solid #000;
     box-sizing: border-box;
+    background: #000;
   }
 }
 .socket-item {
