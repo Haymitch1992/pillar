@@ -6,7 +6,14 @@
         <span class="current">{{ direction }}</span>
         方向
       </span>
-      <span class="kauiche">{{ carType }}</span>
+      <span class="kauiche" v-if="$store.state.direction == 1">
+        <p class="cn">快车</p>
+        <p>Express</p>
+      </span>
+      <span class="manche" v-if="$store.state.direction == 0">
+        <p class="cn">普通车</p>
+        <p>Local</p>
+      </span>
     </div>
     <div class="tips-line">
       <span class="current tips">本次列车不停靠</span>
@@ -35,12 +42,20 @@
     </div>
     <div class="car-info">
       <span class="fl-info">
-        <img src="../assets/arrow-2.png" alt="" />
-        3-4号车门为快车停靠点
+        <span class="men-num">3-4</span>
+        <img class="men-img" src="../assets/pingbimen.png" alt="" />
+        <div class="men-info">
+          <p>快车</p>
+          <p>Express</p>
+        </div>
       </span>
       <span class="fr-info">
-        1-2号车门为普通列车停靠点
-        <img src="../assets/arrow-1.png" alt="" />
+        <span class="men-num">1-2</span>
+        <img class="men-img" src="../assets/pingbimen.png" alt="" />
+        <div class="men-info">
+          <p>普通车</p>
+          <p>Local</p>
+        </div>
       </span>
     </div>
   </div>
@@ -55,7 +70,7 @@ export default {
   },
   computed: {
     direction() {
-      return this.$store.state.direction == 1 ? '首钢' : '金顶街';
+      return this.$store.state.direction == 1 ? '金顶街' : '首钢';
     },
     lineInfo() {
       // 获取上下行
@@ -75,6 +90,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.men-info {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: -4px;
+  p {
+    font-size: 14px;
+  }
+}
+.men-img {
+  margin: 0 10px !important;
+  vertical-align: top;
+  width: 20px;
+}
+.men-num {
+  font-size: 24px;
+  vertical-align: top;
+}
 .active {
   color: #fff;
   p {
@@ -109,11 +142,36 @@ export default {
     color: #fff;
     display: block;
     border-radius: 10px;
-    line-height: 34px;
-    font-size: 20px;
+    font-size: 22px;
     float: right;
     width: 100px;
     text-align: center;
+    padding: 2px 0;
+    p {
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .cn {
+      font-size: 16px;
+    }
+  }
+  .manche {
+    background: #c69000;
+    color: #fff;
+    display: block;
+    border-radius: 10px;
+    font-size: 22px;
+    padding: 2px 0;
+    float: right;
+    width: 100px;
+    text-align: center;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .cn {
+      font-size: 18px;
+    }
   }
   .pis-line {
     text-align: center;
@@ -140,11 +198,12 @@ export default {
   }
   .car-status {
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     position: relative;
   }
   .tips-line {
     padding-top: 10px;
+    opacity: 0;
   }
   .tips {
     margin-left: 306px;
@@ -152,12 +211,12 @@ export default {
   }
   .per-1 {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 220px;
   }
   .per-2 {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 350px;
   }
 }

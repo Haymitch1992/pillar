@@ -2,6 +2,10 @@
   <div>
     <div class="screen-top">
       <guidance></guidance>
+      <!-- 金安桥站显示 -->
+      <guidance3
+        v-if="$store.state.station == 11002 || $store.state.station == 11102"
+      ></guidance3>
     </div>
     <div class="screen-content">
       <div class="content-box">
@@ -23,7 +27,8 @@ import {
   onBeforeUnmount,
   watch
 } from 'vue';
-import guidance from '../components/guidance.vue';
+import guidance from '../components/guidance-reverse.vue';
+import guidance3 from '../components/guidance3-reverse.vue';
 import linebox from '../components/line.vue';
 interface DataProps {
   listarr: string[];
@@ -34,6 +39,7 @@ export default defineComponent({
   name: 'screen1',
   components: {
     guidance,
+    guidance3,
     linebox
   },
   // 声明周期

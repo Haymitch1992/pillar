@@ -1,23 +1,49 @@
 <template>
   <div class="line-box">
-    <img class="line-arrow-1" src="../assets/line-arrow-1.png" alt="" />
-    <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" />
+    <!-- <img class="line-arrow-1" src="../assets/line-arrow-1.png" alt="" /> -->
+    <!-- <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" /> -->
     <!-- 站台 -->
     <div class="station-box">
       <div
         class="station"
-        v-for="item in lineInfo"
+        v-for="(item, index) in lineInfo"
         :key="item.station_id"
-        :class="item.station_id == $store.state.station ? 'active' : ''"
+        :class="[
+          item.station_id == $store.state.station ? 'active' : '',
+          'station-item-' + index
+        ]"
       >
         <p>{{ item.cn_name }}</p>
         <p class="en">{{ item.en_name }}</p>
       </div>
     </div>
-
+    <!-- 向上的箭头 -->
+    <div class="arrow-up-box">
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+    </div>
+    <div class="arrow-up-box right">
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+      <img src="../assets/arrow.png" class="arrow-up" alt="" />
+    </div>
     <!-- 线路 -->
-    <div class="line-box kuai">
-      <div class="line line-1">
+    <div class="line-box kuai" v-if="$store.state.direction == 1">
+      <div class="line line-left line-1">
+        <span
+          :class="[
+            'station-' + index,
+            $store.state.direction == 1 ? 'shangxing' : '',
+            item.station_id == $store.state.station ? 'active' : ''
+          ]"
+          v-for="(item, index) in lineInfo"
+          :key="item.station_id"
+        ></span>
+      </div>
+    </div>
+    <div class="line-box kuai" v-if="$store.state.direction == 0">
+      <div class="line line-left line-2">
         <span
           :class="[
             'station-' + index,
@@ -30,7 +56,7 @@
     </div>
 
     <div class="line-box man">
-      <div class="line line-2">
+      <div class="line line-right line-2">
         <span
           :class="[
             'station-' + index,
@@ -42,7 +68,7 @@
       </div>
     </div>
     <!-- 站牌 -->
-    <div class="sign">
+    <div class="sign" v-if="$store.state.direction == 1">
       <img src="../assets/arrow-left-top.png" alt="" />
       <div class="sign-bottom">
         <p>2分钟</p>
@@ -51,12 +77,21 @@
         <span class="sign-en">Express Line</span>
       </div>
     </div>
+    <div class="sign sign-3" v-if="$store.state.direction == 0">
+      <img src="../assets/arrow-left-top.png" alt="" />
+      <div class="sign-bottom">
+        <p>2分钟</p>
+        <P>2Min</P>
+        <span class="sign-text">普通车线路</span>
+        <span class="sign-en">Express Line</span>
+      </div>
+    </div>
     <div class="sign sign-2">
       <img src="../assets/arrow-right-top.png" alt="" />
       <div class="sign-bottom">
         <p>2分钟</p>
         <P>2Min</P>
-        <span class="sign-text">慢车线路</span>
+        <span class="sign-text">普通车线路</span>
         <span class="sign-en">Local Line</span>
       </div>
     </div>
@@ -70,10 +105,12 @@ export default {
     return {};
   },
   computed: {
+    // 区分上下行 首钢到金顶街 有快车
+    // 金顶街到首钢 都是普通
     lineInfo() {
       // 获取上下行
       let lineObj = [];
-      let returnObj = [];
+
       if (this.$store.state.direction == 1) {
         // 下行
         lineObj = this.$store.state.stationInfo.down;
@@ -81,17 +118,25 @@ export default {
         // 上行
         lineObj = this.$store.state.stationInfo.up;
       }
-      console.log(lineObj.length);
-      for (var n = lineObj.length - 1; n >= 0; n--) {
-        returnObj.push(lineObj[n]);
-      }
-      console.log(returnObj);
-      return returnObj;
+      return lineObj;
     }
   }
 };
 </script>
 <style lang="less" scoped>
+.arrow-up-box {
+  position: absolute;
+  top: 199px;
+  left: 149px;
+  width: 20px;
+  z-index: 100;
+  img {
+    display: block;
+  }
+}
+.arrow-up-box.right {
+  left: 461px;
+}
 .line-box {
   position: relative;
 }
@@ -110,6 +155,26 @@ export default {
     font-size: 20px;
   }
 }
+.station-item-0 {
+  position: absolute;
+  top: 470px;
+  left: 0px;
+}
+.station-item-1 {
+  position: absolute;
+  top: 310px;
+  left: 0px;
+}
+.station-item-2 {
+  position: absolute;
+  top: 150px;
+  left: 0px;
+}
+.station-item-3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
 .station-box {
   width: 200px;
   position: absolute;
@@ -127,20 +192,27 @@ export default {
 .kuai {
   position: absolute;
   left: 150px;
-  top: 130px;
+  top: 80px;
 }
 .man {
   position: absolute;
   right: 150px;
-  top: 130px;
+  top: 80px;
+}
+.line-left {
+  border-top-left-radius: 20px;
+}
+.line-right {
+  border-top-right-radius: 20px;
 }
 .line {
   width: 18px;
-  height: 500px;
+  height: 550px;
   position: relative;
+
   span {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 4px solid #fff;
     background: #28bd72;
@@ -148,8 +220,8 @@ export default {
   }
   .active::before {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: #28bd72;
     display: inline-block;
@@ -176,23 +248,29 @@ export default {
 
   .station-0 {
     position: absolute;
-    top: -10px;
-    left: -10px;
+    left: -5px;
+    bottom: -10px;
   }
   .station-1 {
     position: absolute;
-    top: 150px;
-    left: -10px;
+
+    top: 360px;
+    left: -5px;
   }
   .station-2 {
     position: absolute;
-    top: 310px;
-    left: -10px;
+    top: 210px;
+    left: -5px;
+  }
+  .shangxing.station-2 {
+    opacity: 0;
   }
   .station-3 {
     position: absolute;
-    bottom: -10px;
-    left: -10px;
+
+    top: 50px;
+
+    left: -5px;
   }
 }
 .line-1 {
@@ -212,6 +290,7 @@ export default {
   text-align: left;
   top: 220px;
   left: 40px;
+  height: 340px;
   img {
     display: block;
     width: 80%;
@@ -227,7 +306,7 @@ export default {
   }
   .sign-text {
     width: 30px;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 24px;
     display: block;
     display: inline-block;
@@ -250,6 +329,10 @@ export default {
 }
 .sign-2 {
   left: 520px;
+  background: #c69000;
+}
+.sign-3 {
+  left: 40px;
   background: #c69000;
 }
 .line-arrow-1 {

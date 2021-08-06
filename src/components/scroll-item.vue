@@ -4,8 +4,12 @@
     <div class="scroll-box" ref="scrollBox">
       <div class="scroll-text" v-if="showText">
         <!-- <p>{{ $store.state.alertInfo }}</p> -->
-        <div class="alert-item" v-for="(item, index) in ceshi" :key="index">
-          <p class="alert-text">{{ item.status }}</p>
+        <div
+          class="alert-item"
+          v-for="(item, index) in $store.state.alertInfo"
+          :key="index"
+        >
+          <p class="alert-text">{{ item.type }}</p>
           <img :src="item.image_url" />
         </div>
       </div>
@@ -16,7 +20,7 @@
           v-for="(item, index) in $store.state.alertInfo"
           :key="index"
         >
-          <p class="alert-text">{{ item.status }}</p>
+          <p class="alert-text">{{ item.type }}</p>
           <img :src="item.image_url" />
         </div>
       </div>
@@ -24,10 +28,14 @@
         <p>
           {{ base_info.cn }}
           {{ base_info.en }}
+          {{ base_info.cn }}
+          {{ base_info.en }}
         </p>
       </div>
       <div class="scroll-text" v-if="!showText">
         <p>
+          {{ base_info.cn }}
+          {{ base_info.en }}
           {{ base_info.cn }}
           {{ base_info.en }}
         </p>
@@ -123,6 +131,7 @@ export default {
     // 每隔一定周期 更新一下数据
     this.timer2 = setInterval(() => {
       this.getHotSpotInfo();
+      this.changStatus();
     }, this.timeLength);
   }
 };

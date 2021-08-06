@@ -8,7 +8,7 @@ export default createStore({
     },
     alertInfo: [],
     trainInfo: {},
-    direction: 0,// 上下行 0 上行 1下行
+    direction: 0,// 上下行 0 上行 金顶街 => 首钢 // 1下行 首钢 => 金顶街
     station: 11101, // 当前车站
   },
   mutations: {

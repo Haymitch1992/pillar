@@ -65,7 +65,7 @@ export default {
       GETTRAININFO(1, 1).then((res) => {
         console.log(res);
       });
-      GETPERCEPTIONALARM(1, 2).then((res) => {
+      GETPERCEPTIONALARM().then((res) => {
         console.log(res);
         // 有数据
         if (res.data.result) {

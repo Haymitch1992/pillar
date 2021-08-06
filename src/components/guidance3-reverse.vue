@@ -1,15 +1,15 @@
 <template>
   <!-- 引导 -->
   <div class="guidance">
+    <img class="arrow-img" src="../assets/arrow-left.png" alt="" />
+    <img class="person-img" src="../assets/distance-left.gif" alt="" />
+    <span>30m</span>
+    <span class="station-icon line-6">6</span>
+    <span class="station-icon s1">S1</span>
     <span class="text-info">
       <p class="text-info-cn">换乘</p>
       <p class="text-info-en">Tnterchange</p>
     </span>
-    <span class="station-icon line-6">6</span>
-    <span class="station-icon s1">S1</span>
-    <span>30m</span>
-    <img class="person-img" src="../assets/distance-right.gif" alt="" />
-    <img class="arrow-img" src="../assets/arrow-right.png" alt="" />
   </div>
 </template>
 

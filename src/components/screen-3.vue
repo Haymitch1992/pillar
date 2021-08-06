@@ -2,7 +2,10 @@
   <div>
     <div class="screen-top">
       <guidance></guidance>
-      <guidance3></guidance3>
+      <!-- 金安桥站显示 -->
+      <guidance3
+        v-if="$store.state.station == 11002 || $store.state.station == 11102"
+      ></guidance3>
     </div>
     <div class="screen-content">
       <div class="station-title-box">

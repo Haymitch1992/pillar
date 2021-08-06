@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <screen2 class="item item-2"></screen2>
-    <screen3 class="item item-3"></screen3>
     <screen4 class="item item-4"></screen4>
+    <screen3 class="item item-3"></screen3>
+    <screen2 class="item item-2"></screen2>
     <screen1 class="item item-1"></screen1>
     <scroll-item></scroll-item>
     <snow></snow>
