@@ -28,14 +28,10 @@
         <p>
           {{ base_info.cn }}
           {{ base_info.en }}
-          {{ base_info.cn }}
-          {{ base_info.en }}
         </p>
       </div>
       <div class="scroll-text" v-if="!showText">
         <p>
-          {{ base_info.cn }}
-          {{ base_info.en }}
           {{ base_info.cn }}
           {{ base_info.en }}
         </p>
@@ -82,7 +78,7 @@ export default {
         }
       ],
       timer2: '',
-      timeLength: 60000
+      timeLength: 600000
     };
   },
   watch: {

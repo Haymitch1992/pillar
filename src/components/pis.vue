@@ -2,8 +2,14 @@
   <div class="pis">
     <div class="pis-top">
       <span>
-        开往
-        <span class="current">{{ direction }}</span>
+        <span class="pis-text-line">
+          <p>开往</p>
+          <P class="pis-text-p">To</P>
+        </span>
+        <span class="current pis-text-line">
+          <p>{{ direction }}</p>
+          <P class="pis-text-p">{{ directionEn }}</P>
+        </span>
         方向
       </span>
       <span class="kauiche" v-if="$store.state.direction == 1">
@@ -38,6 +44,8 @@
       <img src="../assets/car-1.png" alt="" />
       <img src="../assets/car-2.png" alt="" />
       <img class="per-1" src="../assets/person-2.png" alt="" />
+      <span class="pos-num-1">1</span>
+      <span class="pos-num-2">2</span>
       <img class="per-2" src="../assets/person.png" alt="" />
     </div>
     <div class="car-info">
@@ -72,6 +80,9 @@ export default {
     direction() {
       return this.$store.state.direction == 1 ? '金顶街' : '首钢';
     },
+    directionEn() {
+      return this.$store.state.direction == 1 ? 'JINDINGJIE' : 'SHOUGANG';
+    },
     lineInfo() {
       // 获取上下行
       let lineObj = [];
@@ -90,6 +101,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.pis-text-line {
+  display: inline-block;
+  vertical-align: top;
+  p {
+    text-align: center;
+  }
+}
+.pis-text-p {
+  font-size: 14px;
+}
 .men-info {
   display: inline-block;
   vertical-align: top;
@@ -213,6 +234,16 @@ export default {
     position: absolute;
     bottom: 20px;
     left: 220px;
+  }
+  .pos-num-1 {
+    position: absolute;
+    bottom: 18px;
+    left: 170px;
+  }
+  .pos-num-2 {
+    position: absolute;
+    bottom: 18px;
+    left: 410px;
   }
   .per-2 {
     position: absolute;

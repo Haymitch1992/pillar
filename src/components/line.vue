@@ -143,6 +143,7 @@ export default {
 
 .station {
   border: 2px solid #fff;
+  background: #202c44;
   text-align: center;
   border-radius: 10px;
   display: inline-block;
@@ -157,22 +158,22 @@ export default {
 }
 .station-item-0 {
   position: absolute;
-  top: 470px;
+  top: 450px;
   left: 0px;
 }
 .station-item-1 {
   position: absolute;
-  top: 310px;
+  top: 290px;
   left: 0px;
 }
 .station-item-2 {
   position: absolute;
-  top: 150px;
+  top: 130px;
   left: 0px;
 }
 .station-item-3 {
   position: absolute;
-  top: 0px;
+  top: -20px;
   left: 0px;
 }
 .station-box {
@@ -181,8 +182,9 @@ export default {
   left: 210px;
   top: 110px;
   .station.active {
+    background: #0b3b96;
     p {
-      font-weight: bold;
+      color: #fff;
     }
     .en {
       font-size: 24px;
@@ -192,12 +194,12 @@ export default {
 .kuai {
   position: absolute;
   left: 150px;
-  top: 80px;
+  top: 60px;
 }
 .man {
   position: absolute;
   right: 150px;
-  top: 80px;
+  top: 60px;
 }
 .line-left {
   border-top-left-radius: 20px;

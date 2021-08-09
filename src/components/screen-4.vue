@@ -8,7 +8,13 @@
         <pis></pis>
       </div>
       <div class="station-img-box">
-        <img class="map-img" src="../assets/map-2.png" alt="" />
+        <img
+          class="map-img"
+          v-if="$store.state.station == 11002 || $store.state.station == 11102"
+          src="../assets/map-2.png"
+          alt=""
+        />
+        <img class="map-img" v-else src="../assets/map-2-other.png" alt="" />
       </div>
     </div>
   </div>
