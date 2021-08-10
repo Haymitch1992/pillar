@@ -22,7 +22,11 @@
       </span>
     </div>
     <div class="tips-line">
-      <span class="current tips">本次列车不停靠</span>
+      <!-- 下行不显示 -->
+      <span class="current tips" v-show="$store.state.direction == 1">
+        本次列车不停靠
+      </span>
+      <span class="current tips" v-show="$store.state.direction == 0"></span>
     </div>
     <div class="pis-line">
       <i v-for="(item, index) in lineInfo" :key="item.station_id">
@@ -199,7 +203,7 @@ export default {
     width: 100%;
     font-size: 20px;
     padding-bottom: 20px;
-    margin-top: 10px !important;
+    margin-top: 4px !important;
     i {
       font-style: normal;
     }
@@ -223,11 +227,10 @@ export default {
     position: relative;
   }
   .tips-line {
-    padding-top: 10px;
-    opacity: 0;
+    padding-top: 4px;
   }
   .tips {
-    margin-left: 306px;
+    margin-left: 322px;
     font-size: 16px;
   }
   .per-1 {
