@@ -3,7 +3,7 @@
   <div class="guidance">
     <img class="arrow-img" src="../assets/arrow-left.png" alt="" />
     <img class="person-img" src="../assets/distance-left.gif" alt="" />
-    <span>10m</span>
+    <span>5m</span>
     <span class="station-icon">A</span>
     <span class="station-icon">B</span>
     <span class="station-icon">C</span>
@@ -16,5 +16,4 @@
 
 <style lang="less" scoped>
 @import '../theme/index.less';
-
 </style>

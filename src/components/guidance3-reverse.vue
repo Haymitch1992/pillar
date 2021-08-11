@@ -8,7 +8,7 @@
     <span class="station-icon s1">S1</span>
     <span class="text-info">
       <p class="text-info-cn">换乘</p>
-      <p class="text-info-en">Tnterchange</p>
+      <p class="text-info-en">Interchange</p>
     </span>
   </div>
 </template>

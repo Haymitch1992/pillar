@@ -9,7 +9,7 @@
     <span class="station-icon">A</span>
     <span class="station-icon">B</span>
     <span class="station-icon">C</span>
-    <span>10m</span>
+    <span>5m</span>
     <img class="person-img" src="../assets/distance-right.gif" alt="" />
 
     <img class="arrow-img" src="../assets/arrow-right.png" alt="" />

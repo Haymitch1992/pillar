@@ -1,47 +1,61 @@
 <template>
   <div class="scroll-item" @click="changStatus">
-    <!-- 文字显示 -->
-    <div class="scroll-box" ref="scrollBox">
-      <div class="scroll-text" v-if="showText">
-        <!-- <p>{{ $store.state.alertInfo }}</p> -->
-        <div
-          class="alert-item"
-          v-for="(item, index) in $store.state.alertInfo"
-          :key="index"
-        >
-          <p class="alert-text">{{ item.type }}</p>
-          <img :src="item.image_url" />
-        </div>
-      </div>
-      <div class="scroll-text" v-if="showText">
-        <!-- <p>{{ $store.state.alertInfo }}</p> -->
-        <div
-          class="alert-item"
-          v-for="(item, index) in $store.state.alertInfo"
-          :key="index"
-        >
-          <p class="alert-text">{{ item.type }}</p>
-          <img :src="item.image_url" />
-        </div>
-      </div>
-      <div class="scroll-text" v-if="!showText">
+    <!-- 图片轮播 -->
+    <div class="scroll-box" ref="scrollBox2" v-show="!showText">
+      <div class="scroll-text">
         <p>
           {{ base_info.cn }}
           {{ base_info.en }}
         </p>
       </div>
-      <div class="scroll-text" v-if="!showText">
+      <div class="scroll-text">
         <p>
           {{ base_info.cn }}
           {{ base_info.en }}
         </p>
       </div>
     </div>
+    <!-- 文字显示 -->
+    <div class="scroll-box" ref="scrollBox" v-show="showText">
+      <div class="scroll-text">
+        <!-- <p>{{ $store.state.alertInfo }}</p> -->
+        <div class="img-top">
+          <div
+            class="alert-item"
+            v-for="(item, index) in $store.state.alertInfo"
+            :key="index"
+          >
+            <img :src="item.image_url" />
+            <p class="alert-text">{{ item.type }}</p>
+          </div>
+        </div>
+        <div class="img-bottom">
+          {{ base_info.cn }}
+          {{ base_info.en }}
+        </div>
+      </div>
+      <div class="scroll-text">
+        <!-- <p>{{ $store.state.alertInfo }}</p> -->
+        <div class="img-top">
+          <div
+            class="alert-item"
+            v-for="(item, index) in $store.state.alertInfo"
+            :key="index"
+          >
+            <img :src="item.image_url" />
+            <p class="alert-text">{{ item.type }}</p>
+          </div>
+        </div>
+        <div class="img-bottom">
+          {{ base_info.cn }}
+          {{ base_info.en }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import alertImg from '../assets/alert-1.png';
 import { GETHOTSPOTINFO } from '../services/user';
 export default {
   name: 'screen1',
@@ -55,28 +69,6 @@ export default {
         cn: '',
         en: ''
       },
-      ceshi: [
-        {
-          image_url: alertImg,
-          status: '进站'
-        },
-        {
-          image_url: alertImg,
-          status: '进站'
-        },
-        {
-          image_url: alertImg,
-          status: '进站'
-        },
-        {
-          image_url: alertImg,
-          status: '进站'
-        },
-        {
-          image_url: alertImg,
-          status: '进站'
-        }
-      ],
       timer2: '',
       timeLength: 600000
     };
@@ -96,9 +88,11 @@ export default {
       this.showText = true;
       this.start();
     },
+
     // width 2560px
     start() {
       let boxDom = this.$refs.scrollBox;
+      let boxDom2 = this.$refs.scrollBox2;
       // let num = 2560;
       clearInterval(this.timer);
       this.timer = setInterval(() => {
@@ -112,6 +106,7 @@ export default {
           this.num = this.num - 2;
         }
         boxDom.style.left = this.num + 'px';
+        boxDom2.style.left = this.num + 'px';
       }, 20);
     },
     afterGetInfo(res) {
@@ -134,19 +129,33 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.img-top {
+  height: 110px;
+  display: block;
+}
+.img-bottom {
+  height: 30px;
+  display: block;
+  font-size: 26px;
+  line-height: 26px;
+}
 .alert-item {
-  width: 150px;
+  width: 130px;
   display: inline-block;
   height: 140px;
   margin: 0 5px 0 5px;
+  position: relative;
   .alert-text {
     height: 40px;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     display: block;
     width: 150px;
     line-height: 40px;
     text-align: center;
+    position: absolute;
+    top: 40px;
+    left: 0px;
   }
   img {
     display: block;
@@ -154,6 +163,7 @@ export default {
     height: 90px;
     border-radius: 6px;
     margin-left: 30px;
+    margin-top: 10px;
   }
 }
 @import '../theme/index.less';

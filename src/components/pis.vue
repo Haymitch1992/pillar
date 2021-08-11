@@ -12,21 +12,14 @@
         </span>
         方向
       </span>
-      <span class="kauiche" v-if="$store.state.direction == 1">
-        <p class="cn">快车</p>
-        <p>Express</p>
-      </span>
-      <span class="manche" v-if="$store.state.direction == 0">
+      <span class="manche">
         <p class="cn">普通车</p>
         <p>Local</p>
       </span>
     </div>
     <div class="tips-line">
       <!-- 下行不显示 -->
-      <span class="current tips" v-show="$store.state.direction == 1">
-        本次列车不停靠
-      </span>
-      <span class="current tips" v-show="$store.state.direction == 0"></span>
+      <span class="current tips"></span>
     </div>
     <div class="pis-line">
       <i v-for="(item, index) in lineInfo" :key="item.station_id">
@@ -45,18 +38,33 @@
       </i>
     </div>
     <div class="car-status">
-      <img src="../assets/car-1.png" alt="" />
-      <img src="../assets/car-2.png" alt="" />
+      <div class="car-container">
+        <div class="car-men">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="car-men car-men-1">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <!-- <img src="../assets/car-1.png" alt="" />
+      <img src="../assets/car-2.png" alt="" /> -->
       <img class="per-1" src="../assets/person-2.png" alt="" />
-      <span class="pos-num-1">1</span>
-      <span class="pos-num-2">2</span>
+      <!-- <span class="pos-num-1">1</span>
+      <span class="pos-num-2">2</span> -->
       <img class="per-2" src="../assets/person.png" alt="" />
     </div>
     <div class="car-info">
       <span class="fl-info">
         <span class="men-num">3-4</span>
         <img class="men-img" src="../assets/pingbimen.png" alt="" />
-        <div class="men-info">
+        <!--  -->
+        <div class="men-info" v-if="$store.state.direction == 0">
+          <p>普通车</p>
+          <p>Local</p>
+        </div>
+        <div class="men-info" v-if="$store.state.direction == 1">
           <p>快车</p>
           <p>Express</p>
         </div>
@@ -82,10 +90,10 @@ export default {
   },
   computed: {
     direction() {
-      return this.$store.state.direction == 1 ? '金顶街' : '首钢';
+      return this.$store.state.direction == 1 ? '金顶桥' : '首钢';
     },
     directionEn() {
-      return this.$store.state.direction == 1 ? 'JINDINGJIE' : 'SHOUGANG';
+      return this.$store.state.direction == 1 ? 'Jinding Qiao' : 'Shou Gang';
     },
     lineInfo() {
       // 获取上下行
@@ -105,6 +113,35 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.car-container {
+  width: 300px;
+  height: 34px;
+  display: block;
+  margin: 0 auto;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #28bd73, #fac527);
+  // 红色 #BD3928
+  position: relative;
+  .car-men {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    span {
+      display: inline-block;
+      height: 20px;
+      width: 10px;
+      background: #fff;
+      margin-right: 2px;
+      vertical-align: bottom;
+    }
+  }
+  .car-men-1 {
+    left: 210px;
+  }
+}
 .pis-text-line {
   display: inline-block;
   vertical-align: top;
@@ -181,7 +218,7 @@ export default {
     }
   }
   .manche {
-    background: #c69000;
+    background: #ed9166;
     color: #fff;
     display: block;
     border-radius: 10px;
@@ -235,8 +272,8 @@ export default {
   }
   .per-1 {
     position: absolute;
-    bottom: 20px;
-    left: 220px;
+    bottom: 10px;
+    left: 235px;
   }
   .pos-num-1 {
     position: absolute;
@@ -250,8 +287,8 @@ export default {
   }
   .per-2 {
     position: absolute;
-    bottom: 20px;
-    left: 350px;
+    bottom: 10px;
+    left: 385px;
   }
 }
 </style>

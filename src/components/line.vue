@@ -1,7 +1,5 @@
 <template>
   <div class="line-box">
-    <!-- <img class="line-arrow-1" src="../assets/line-arrow-1.png" alt="" /> -->
-    <!-- <img class="line-arrow-2" src="../assets/line-arrow-2.png" alt="" /> -->
     <!-- 站台 -->
     <div class="station-box">
       <div
@@ -15,19 +13,28 @@
       >
         <p>{{ item.cn_name }}</p>
         <p class="en">{{ item.en_name }}</p>
+        <!-- 向上的箭头 -->
+        <div
+          class="arrow-up-box"
+          :class="['station-arrow-' + index]"
+          v-if="item.station_id == $store.state.station"
+        >
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+        </div>
+        <div
+          class="arrow-up-box right"
+          :class="['station-arrow-' + index]"
+          v-if="item.station_id == $store.state.station"
+        >
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+          <img src="../assets/arrow.png" class="arrow-up" alt="" />
+        </div>
       </div>
     </div>
-    <!-- 向上的箭头 -->
-    <div class="arrow-up-box">
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-    </div>
-    <div class="arrow-up-box right">
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-      <img src="../assets/arrow.png" class="arrow-up" alt="" />
-    </div>
+
     <!-- 线路 -->
     <div class="line-box kuai" v-if="$store.state.direction == 1">
       <div class="line line-left line-1">
@@ -69,7 +76,13 @@
     </div>
     <!-- 站牌 -->
     <div class="sign" v-if="$store.state.direction == 1">
-      <img src="../assets/arrow-left-top.png" alt="" />
+      <img
+        v-if="$store.state.station != 11102"
+        src="../assets/arrow-left-top.png"
+        alt=""
+      />
+      <!-- 金安桥站显示 快车不停车 -->
+      <img v-else src="../assets/stop.png" alt="" />
       <div class="sign-bottom">
         <p>2分钟</p>
         <P>2Min</P>
@@ -126,16 +139,19 @@ export default {
 <style lang="less" scoped>
 .arrow-up-box {
   position: absolute;
-  top: 199px;
-  left: 149px;
+  top: 70px;
+  left: -62px;
   width: 20px;
   z-index: 100;
   img {
     display: block;
   }
 }
+.station-arrow-0 {
+  display: none;
+}
 .arrow-up-box.right {
-  left: 461px;
+  left: 249px;
 }
 .line-box {
   position: relative;
@@ -163,17 +179,17 @@ export default {
 }
 .station-item-1 {
   position: absolute;
-  top: 290px;
+  top: 280px;
   left: 0px;
 }
 .station-item-2 {
   position: absolute;
-  top: 130px;
+  top: 110px;
   left: 0px;
 }
 .station-item-3 {
   position: absolute;
-  top: -20px;
+  top: -60px;
   left: 0px;
 }
 .station-box {
@@ -203,9 +219,11 @@ export default {
 }
 .line-left {
   border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 .line-right {
   border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 .line {
   width: 18px;
@@ -261,7 +279,7 @@ export default {
   }
   .station-2 {
     position: absolute;
-    top: 210px;
+    top: 190px;
     left: -5px;
   }
   .shangxing.station-2 {
@@ -270,7 +288,7 @@ export default {
   .station-3 {
     position: absolute;
 
-    top: 50px;
+    top: 0px;
 
     left: -5px;
   }
@@ -279,7 +297,7 @@ export default {
   background: #0070ac;
 }
 .line-2 {
-  background: #c69000;
+  background: #ed9166;
 }
 .sign {
   display: block;
@@ -331,11 +349,11 @@ export default {
 }
 .sign-2 {
   left: 520px;
-  background: #c69000;
+  background: #ed9166;
 }
 .sign-3 {
   left: 40px;
-  background: #c69000;
+  background: #ed9166;
 }
 .line-arrow-1 {
   position: absolute;

@@ -8,7 +8,7 @@
     </span>
     <img class="person-img" src="../assets/distance-right.gif" alt="" />
 
-    <span>10m</span>
+    <span>3m</span>
     <img class="arrow-img" src="../assets/arrow-right.png" alt="" />
   </div>
 </template>

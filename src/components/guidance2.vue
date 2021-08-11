@@ -3,7 +3,7 @@
   <div class="guidance">
     <img class="arrow-img" src="../assets/arrow-left.png" alt="" />
     <img class="person-img" src="../assets/distance-left.gif" alt="" />
-    <span>10m</span>
+    <span>3m</span>
     <img class="station-img" src="../assets/zhan-2.png" alt="" />
     <span class="text-info">
       <p class="text-info-cn">乘车</p>
