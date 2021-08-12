@@ -84,8 +84,8 @@
       <!-- 金安桥站显示 快车不停车 -->
       <img v-else src="../assets/stop.png" alt="" />
       <div class="sign-bottom">
-        <p>2分钟</p>
-        <P>2Min</P>
+        <p>{{ $store.state.trainInfo.train2.train_state.arrival_time }}分钟</p>
+        <P>{{ $store.state.trainInfo.train2.train_state.arrival_time }}Min</P>
         <span class="sign-text">快车线路</span>
         <span class="sign-en">Express Line</span>
       </div>
@@ -93,8 +93,8 @@
     <div class="sign sign-3" v-if="$store.state.direction == 0">
       <img src="../assets/arrow-left-top.png" alt="" />
       <div class="sign-bottom">
-        <p>2分钟</p>
-        <P>2Min</P>
+        <p>{{ $store.state.trainInfo.train2.train_state.arrival_time }}分钟</p>
+        <P>{{ $store.state.trainInfo.train2.train_state.arrival_time }}Min</P>
         <span class="sign-text">普通车线路</span>
         <span class="sign-en">Express Line</span>
       </div>
@@ -102,8 +102,8 @@
     <div class="sign sign-2">
       <img src="../assets/arrow-right-top.png" alt="" />
       <div class="sign-bottom">
-        <p>2分钟</p>
-        <P>2Min</P>
+        <p>{{ $store.state.trainInfo.train1.train_state.arrival_time }}分钟</p>
+        <P>{{ $store.state.trainInfo.train1.train_state.arrival_time }}Min</P>
         <span class="sign-text">普通车线路</span>
         <span class="sign-en">Local Line</span>
       </div>
@@ -139,9 +139,10 @@ export default {
 <style lang="less" scoped>
 .arrow-up-box {
   position: absolute;
-  top: 70px;
+  top: 100px;
   left: -62px;
-  width: 20px;
+  width: 18px;
+  overflow: hidden;
   z-index: 100;
   img {
     display: block;
@@ -151,7 +152,7 @@ export default {
   display: none;
 }
 .arrow-up-box.right {
-  left: 249px;
+  left: 250px;
 }
 .line-box {
   position: relative;

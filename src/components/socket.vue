@@ -2,11 +2,7 @@
   <div class="box">websocket</div>
 </template>
 <script>
-import {
-  GETSTAIONINFO,
-  GETTRAININFO,
-  GETPERCEPTIONALARM
-} from '../services/user';
+import { GETSTAIONINFO, GETTRAININFO } from '../services/user';
 import { mapMutations } from 'vuex';
 const heartCheck = {
   timeout: 60 * 1000,
@@ -44,14 +40,41 @@ export default {
   mounted() {
     this.initWebSocket();
     this.getInfo();
+    setInterval(() => {
+      this.getTrain();
+    }, 10000);
   },
   methods: {
     ...mapMutations([
       'setStationInfo',
       'setAlterInfo',
       'setDirection',
-      'setStation'
+      'setStation',
+      'setTainInfo'
     ]),
+    afterGetTrainInfo(res) {
+      // 更新车辆的数据
+      if (res.data.result === '') return;
+      if (res.data.result.train_002 === '' || res.data.result.train_001 === '')
+        return;
+      let train1 = {
+        train_state: res.data.result.train_002.train_state,
+        carriage_state: res.data.result.train_002.train_state
+      };
+      let train2 = {
+        train_state: res.data.result.train_001.train_state,
+        carriage_state: res.data.result.train_001.carriage_state
+      };
+      this.setTainInfo({
+        train1: train1,
+        train2: train2
+      });
+    },
+    getTrain() {
+      GETTRAININFO(this.$store.state.direction, this.$store.state.station).then(
+        this.afterGetTrainInfo
+      );
+    },
     getInfo() {
       GETSTAIONINFO().then((res) => {
         console.log(res);
@@ -62,16 +85,7 @@ export default {
         });
         console.log('**************', this.$store.state.stationInfo);
       });
-      GETTRAININFO(1, 1).then((res) => {
-        console.log(res);
-      });
-      GETPERCEPTIONALARM().then((res) => {
-        console.log(res);
-        // 有数据
-        if (res.data.result) {
-          this.setAlterInfo(res.data.result.abnormal_info);
-        }
-      });
+      this.getTrain();
     },
     reconnect() {
       console.log('尝试重连');

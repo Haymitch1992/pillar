@@ -30,7 +30,8 @@
         </span>
       </div>
       <div class="station-img-box">
-        <img class="map-img" src="../assets/map-1.png" alt="" />
+        <img class="map-img" v-if="showImg" src="../assets/map-1.png" alt="" />
+        <img class="map-img" v-if="!showImg" src="../assets/map-4.png" alt="" />
       </div>
     </div>
   </div>
@@ -44,6 +45,11 @@ export default defineComponent({
     guidance,
     guidance3
   },
+  data() {
+    return {
+      showImg: false
+    };
+  },
   computed: {
     currentStation() {
       let lineObj = [];
@@ -56,6 +62,11 @@ export default defineComponent({
       }
       return lineObj;
     }
+  },
+  mounted() {
+    setInterval(() => {
+      this.showImg = !this.showImg;
+    }, 10000);
   }
 });
 </script>

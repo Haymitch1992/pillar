@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-item" @click="changStatus">
+  <div class="scroll-item" >
     <!-- 图片轮播 -->
     <div class="scroll-box" ref="scrollBox2" v-show="!showText">
       <div class="scroll-text">
@@ -52,13 +52,19 @@
         </div>
       </div>
     </div>
+    <!-- 图片的轮播 -->
+    <scrollImg @changeStatus="changeStatus" v-show="showText"></scrollImg>
   </div>
 </template>
 
 <script>
-import { GETHOTSPOTINFO } from '../services/user';
+import { GETHOTSPOTINFO, GETPERCEPTIONALARM } from '../services/user';
+import scrollImg from '../components/scrollImg.vue';
 export default {
   name: 'screen1',
+  components: {
+    scrollImg
+  },
   // 声明周期
   data() {
     return {
@@ -70,25 +76,17 @@ export default {
         en: ''
       },
       timer2: '',
-      timeLength: 600000
+      timeLength: 6000
     };
   },
-  watch: {
-    '$store.state.alertInfo'() {
-      // 监听 告警信息发生变化
-      this.changStatus();
-    }
-  },
+
   methods: {
+    changeStatus(val) {
+      this.showText = val;
+    },
     getHotSpotInfo() {
       GETHOTSPOTINFO().then(this.afterGetInfo);
     },
-    changStatus() {
-      this.num = 0;
-      this.showText = true;
-      this.start();
-    },
-
     // width 2560px
     start() {
       let boxDom = this.$refs.scrollBox;
@@ -96,11 +94,11 @@ export default {
       // let num = 2560;
       clearInterval(this.timer);
       this.timer = setInterval(() => {
-        if (this.num <= -2560) {
+        if (this.num < -2560) {
           // 判断如果是轮播图片的话 切换成字幕
-          if (this.showText) {
-            this.showText = false;
-          }
+          // if (this.showText) {
+          //   this.showText = false;
+          // }
           this.num = 0;
         } else {
           this.num = this.num - 2;
@@ -118,12 +116,7 @@ export default {
   mounted() {
     this.start();
     this.getHotSpotInfo();
-    clearInterval(this.timer2);
-    // 每隔一定周期 更新一下数据
-    this.timer2 = setInterval(() => {
-      this.getHotSpotInfo();
-      this.changStatus();
-    }, this.timeLength);
+
   }
 };
 </script>
