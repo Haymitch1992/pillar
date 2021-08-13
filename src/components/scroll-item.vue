@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-item" >
+  <div class="scroll-item">
     <!-- 图片轮播 -->
     <div class="scroll-box" ref="scrollBox2" v-show="!showText">
       <div class="scroll-text">
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { GETHOTSPOTINFO, GETPERCEPTIONALARM } from '../services/user';
+import { GETHOTSPOTINFO } from '../services/user';
 import scrollImg from '../components/scrollImg.vue';
 export default {
   name: 'screen1',
@@ -95,10 +95,6 @@ export default {
       clearInterval(this.timer);
       this.timer = setInterval(() => {
         if (this.num < -2560) {
-          // 判断如果是轮播图片的话 切换成字幕
-          // if (this.showText) {
-          //   this.showText = false;
-          // }
           this.num = 0;
         } else {
           this.num = this.num - 2;
@@ -116,7 +112,6 @@ export default {
   mounted() {
     this.start();
     this.getHotSpotInfo();
-
   }
 };
 </script>

@@ -90,7 +90,7 @@ export default {
             // 从数组中清除
             this.imgList.splice(index, 1);
           } else {
-            item.left -= 1;
+            item.left -= 2;
           }
         });
       }, 20);

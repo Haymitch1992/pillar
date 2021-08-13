@@ -8,7 +8,16 @@
         <pis></pis>
       </div>
       <div class="station-img-box">
-        <img class="map-img" src="../assets/map-3.png" alt="" />
+        <!-- 首钢站 特殊显示 -->
+        <img
+          class="map-img"
+          v-if="
+            $store.state.station === '11004' || $store.state.station === '11104'
+          "
+          src="../assets/map-7.png"
+          alt=""
+        />
+        <img v-else class="map-img" src="../assets/map-3.png" alt="" />
       </div>
     </div>
   </div>

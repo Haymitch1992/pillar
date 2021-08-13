@@ -42,7 +42,7 @@ export default {
     this.getInfo();
     setInterval(() => {
       this.getTrain();
-    }, 10000);
+    }, 5000);
   },
   methods: {
     ...mapMutations([

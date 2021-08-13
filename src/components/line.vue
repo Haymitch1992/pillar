@@ -84,10 +84,20 @@
       <!-- 金安桥站显示 快车不停车 -->
       <img v-else src="../assets/stop.png" alt="" />
       <div class="sign-bottom">
-        <p>{{ $store.state.trainInfo.train2.train_state.arrival_time }}分钟</p>
-        <P>{{ $store.state.trainInfo.train2.train_state.arrival_time }}Min</P>
-        <span class="sign-text">快车线路</span>
-        <span class="sign-en">Express Line</span>
+        <p v-if="$store.state.station != 11102">
+          {{ $store.state.trainInfo.train2.train_state.arrival_time }}分钟
+        </p>
+        <P v-if="$store.state.station != 11102">
+          {{ $store.state.trainInfo.train2.train_state.arrival_time }}Min
+        </P>
+        <span class="sign-text" v-if="$store.state.station != 11102">
+          快车线路
+        </span>
+        <span class="sign-text" v-else>快车通过不停车</span>
+        <span v-if="$store.state.station != 11102" class="sign-en">
+          Express Line
+        </span>
+        <span v-else class="sign-en">Express Line Skip-Stop</span>
       </div>
     </div>
     <div class="sign sign-3" v-if="$store.state.direction == 0">
@@ -311,7 +321,7 @@ export default {
   text-align: left;
   top: 220px;
   left: 40px;
-  height: 340px;
+  height: 360px;
   img {
     display: block;
     width: 80%;

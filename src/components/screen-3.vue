@@ -30,8 +30,17 @@
         </span>
       </div>
       <div class="station-img-box">
-        <img class="map-img" v-if="showImg" src="../assets/map-1.png" alt="" />
-        <img class="map-img" v-if="!showImg" src="../assets/map-4.png" alt="" />
+        <!-- 首钢站 特殊显示 -->
+        <img
+          class="map-img"
+          v-if="
+            $store.state.station === '11004' || $store.state.station === '11104'
+          "
+          src="../assets/map-6.png"
+          alt=""
+        />
+        <img class="map-img" v-else-if="showImg" src="../assets/map-1.png" alt="" />
+        <img class="map-img"  v-else-if="!showImg" src="../assets/map-4.png" alt="" />
       </div>
     </div>
   </div>

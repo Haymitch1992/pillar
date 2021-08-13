@@ -10,7 +10,7 @@ export default createStore({
     trainInfo: {
       train1: {
         train_state: {
-          arrival_time: 6, //剩余到站时间
+          arrival_time: 2, //剩余到站时间
           arrival_state: 0  // 2 未到达 ，1 即将到达 ，0已到达
         },
         carriage_state:  [  // 车厢拥挤度
@@ -30,7 +30,7 @@ export default createStore({
       },
       train2: {
         train_state: {
-          arrival_time: 5, //剩余到站时间
+          arrival_time: 2, //剩余到站时间
           arrival_state: 0  // 2 未到达 ，1 即将到达 ，0已到达
         },
         carriage_state:  [  // 车厢拥挤度
@@ -49,8 +49,8 @@ export default createStore({
         ]
       },
     },
-    direction: 0,// 上下行 0 上行 金顶街 => 首钢 // 1下行 首钢 => 金顶街
-    station: 11001, // 当前车站
+    direction: 1,// 上下行 0 上行 金顶街 => 首钢 // 1下行 首钢 => 金顶街
+    station: '11102', // 当前车站
     // 001 是快车 002 是慢车
   },
   mutations: {
