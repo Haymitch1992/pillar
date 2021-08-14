@@ -38,7 +38,15 @@
       </i>
     </div>
     <div class="car-status">
-      <div class="car-container">
+      <div
+        class="car-container"
+        :class="
+          'active' +
+          $store.state.trainInfo.train1.carriage_state[0].crowding_degree +
+          '-' +
+          $store.state.trainInfo.train1.carriage_state[1].crowding_degree
+        "
+      >
         <div class="car-men">
           <span></span>
           <span></span>
@@ -122,7 +130,7 @@ export default {
   border-top-right-radius: 40px;
   border: 1px solid #fff;
   box-sizing: border-box;
-  background: linear-gradient(to right, #28bd73, #fac527);
+  background: linear-gradient(to right, #28bd73, #28bd73);
   // 红色 #BD3928
   position: relative;
   .car-men {
@@ -142,6 +150,36 @@ export default {
     left: 210px;
   }
 }
+.active0-0 {
+  background: linear-gradient(to right, #28bd73, #28bd73);
+}
+.active0-1 {
+  background: linear-gradient(to right, #28bd73, #fac527);
+}
+.active0-2 {
+  background: linear-gradient(to right, #28bd73, #bd3928);
+}
+
+.active1-0 {
+  background: linear-gradient(to right, #fac527, #28bd73);
+}
+.active1-1 {
+  background: linear-gradient(to right, #fac527, #fac527);
+}
+.active1-2 {
+  background: linear-gradient(to right, #fac527, #bd3928);
+}
+
+.active2-0 {
+  background: linear-gradient(to right, #bd3928, #28bd73);
+}
+.active2-1 {
+  background: linear-gradient(to right, #bd3928, #fac527);
+}
+.active2-2 {
+  background: linear-gradient(to right, #bd3928, #bd3928);
+}
+
 .pis-text-line {
   display: inline-block;
   vertical-align: top;

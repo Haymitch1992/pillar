@@ -106,7 +106,7 @@
         <p>{{ $store.state.trainInfo.train2.train_state.arrival_time }}分钟</p>
         <P>{{ $store.state.trainInfo.train2.train_state.arrival_time }}Min</P>
         <span class="sign-text">普通车线路</span>
-        <span class="sign-en">Express Line</span>
+        <span class="sign-en">Local Line</span>
       </div>
     </div>
     <div class="sign sign-2">

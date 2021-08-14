@@ -33,8 +33,11 @@
         <!-- 首钢站 特殊显示 -->
         <img
           class="map-img"
-          v-if="
-            $store.state.station === '11004' || $store.state.station === '11104'
+           v-if="
+            ($store.state.station === '11004' &&
+              $store.state.trainInfo.train1.train_state.arrival_state === 2) ||
+            ($store.state.station === '11104' &&
+              $store.state.trainInfo.train1.train_state.arrival_state === 2)
           "
           src="../assets/map-6.png"
           alt=""

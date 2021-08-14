@@ -11,12 +11,12 @@ export default createStore({
       train1: {
         train_state: {
           arrival_time: 2, //剩余到站时间
-          arrival_state: 0  // 2 未到达 ，1 即将到达 ，0已到达
+          arrival_state: 1  // 2 未到达 ，1 即将到达 ，0已到达
         },
         carriage_state:  [  // 车厢拥挤度
           {
               carriageId: 1,    //车厢编号
-              crowding_degree: 0, // 拥挤度：0 轻松舒适，1 轻度拥挤，2 严重拥挤
+              crowding_degree: 1, // 拥挤度：0 轻松舒适，1 轻度拥挤，2 严重拥挤
               temperture: "23℃",//
               barrier_free: true//
           },
@@ -50,7 +50,7 @@ export default createStore({
       },
     },
     direction: 1,// 上下行 0 上行 金顶街 => 首钢 // 1下行 首钢 => 金顶街
-    station: '11102', // 当前车站
+    station: '11104', // 当前车站
     // 001 是快车 002 是慢车
   },
   mutations: {

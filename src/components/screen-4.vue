@@ -18,7 +18,10 @@
         <img
           class="map-img"
           v-else-if="
-            $store.state.station === '11004' || $store.state.station === '11104'
+            ($store.state.station === '11004' &&
+              $store.state.trainInfo.train1.train_state.arrival_state === 2) ||
+            ($store.state.station === '11104' &&
+              $store.state.trainInfo.train1.train_state.arrival_state === 2)
           "
           src="../assets/map-5.png"
           alt=""

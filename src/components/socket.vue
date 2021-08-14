@@ -42,7 +42,7 @@ export default {
     this.getInfo();
     setInterval(() => {
       this.getTrain();
-    }, 5000);
+    }, 3000);
   },
   methods: {
     ...mapMutations([
@@ -59,7 +59,7 @@ export default {
         return;
       let train1 = {
         train_state: res.data.result.train_002.train_state,
-        carriage_state: res.data.result.train_002.train_state
+        carriage_state: res.data.result.train_002.carriage_state
       };
       let train2 = {
         train_state: res.data.result.train_001.train_state,
@@ -127,8 +127,10 @@ export default {
       // console.log('得到响应', e.data);
       // 将数据进行切割
       let arr = e.data.split('|');
-      this.setDirection(arr[1]);
-      this.setStation(arr[0]);
+      if (arr.length === 2) {
+        this.setDirection(arr[1]);
+        this.setStation(arr[0]);
+      }
       // console.log('可以渲染网页数据...');
       // 消息获取成功，重置心跳
       heartCheck.start(this.socket);
@@ -138,7 +140,7 @@ export default {
       this.reconnect();
     },
     websocketsend() {
-      let data = { id: 'a1b2c3' };
+      let data = { id: 'start' };
       this.socket.send(JSON.stringify(data));
     }
   },
