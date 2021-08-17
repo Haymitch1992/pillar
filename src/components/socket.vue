@@ -55,16 +55,31 @@ export default {
     afterGetTrainInfo(res) {
       // 更新车辆的数据
       if (res.data.result === '') return;
-      if (res.data.result.train_002 === '' || res.data.result.train_001 === '')
-        return;
-      let train1 = {
-        train_state: res.data.result.train_002.train_state,
-        carriage_state: res.data.result.train_002.carriage_state
-      };
-      let train2 = {
-        train_state: res.data.result.train_001.train_state,
-        carriage_state: res.data.result.train_001.carriage_state
-      };
+      // 没跑车 两个车的数据都没有
+
+      if (res.data.result.train_002 === '') return;
+      let train1 = {};
+      let train2 = {};
+      if (res.data.result.train_001 === '') {
+        train1 = {
+          train_state: res.data.result.train_002.train_state,
+          carriage_state: res.data.result.train_002.carriage_state
+        };
+        train2 = {
+          train_state: res.data.result.train_002.train_state,
+          carriage_state: res.data.result.train_002.carriage_state
+        };
+      } else {
+        train1 = {
+          train_state: res.data.result.train_002.train_state,
+          carriage_state: res.data.result.train_002.carriage_state
+        };
+        train2 = {
+          train_state: res.data.result.train_001.train_state,
+          carriage_state: res.data.result.train_001.carriage_state
+        };
+      }
+
       this.setTainInfo({
         train1: train1,
         train2: train2
