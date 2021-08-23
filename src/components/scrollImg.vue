@@ -8,7 +8,15 @@
         :key="index"
         :style="{ left: item.left + 'px' }"
       >
-        <img :src="item.url" alt="" />
+        <video
+          width="90"
+          height="90"
+          v-if="item.showType === 'video'"
+          loop
+          autoplay
+          :src="item.url"
+        ></video>
+        <img v-if="item.showType === 'img'" :src="item.url" alt="" />
         <p>{{ item.type }}</p>
       </div>
     </div>
@@ -42,11 +50,16 @@ export default {
     addList(arr) {
       let num = this.findMax();
       arr.forEach((item, index) => {
-        this.imgList.push({
-          url: item.image_url,
-          type: item.type,
-          left: num + 100 * index
-        });
+        if (item.image_url) {
+          let showType = item.image_url.indexOf('mp4') === -1 ? 'img' : 'video';
+          // 根据后缀进行切割
+          this.imgList.push({
+            url: item.image_url,
+            type: item.type,
+            left: num + 100 * index,
+            showType: showType
+          });
+        }
       });
       this.start();
     },
@@ -62,9 +75,9 @@ export default {
           }
         });
       }
-      if (num < 2560) {
+      if (num < 2460) {
         num = 2560;
-      } else if (num > 2560) {
+      } else if (num >= 2460) {
         num = num + 100;
       }
       return num;
@@ -115,6 +128,15 @@ export default {
     position: absolute;
     top: -5px;
     img {
+      display: block;
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+    video {
       display: block;
       position: absolute;
       width: 90px;
