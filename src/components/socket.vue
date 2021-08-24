@@ -146,6 +146,7 @@ export default {
         this.setDirection(arr[1]);
         this.setStation(arr[0]);
       }
+
       // console.log('可以渲染网页数据...');
       // 消息获取成功，重置心跳
       heartCheck.start(this.socket);

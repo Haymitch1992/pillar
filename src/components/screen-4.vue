@@ -14,8 +14,9 @@
           src="../assets/map-2.png"
           alt=""
         />
+        <img class="map-img" v-else src="../assets/map-2-other.png" alt="" />
         <!-- 首钢站 特殊显示 -->
-        <img
+        <!-- <img
           class="map-img"
           v-else-if="
             ($store.state.station === '11004' &&
@@ -25,8 +26,7 @@
           "
           src="../assets/map-5.png"
           alt=""
-        />
-        <img class="map-img" v-else src="../assets/map-2-other.png" alt="" />
+        /> -->
       </div>
     </div>
   </div>

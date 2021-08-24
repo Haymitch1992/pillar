@@ -24,11 +24,17 @@
     <div class="pis-line">
       <i v-for="(item, index) in lineInfo" :key="item.station_id">
         <span
+          class="pis-line-item"
           :class="item.station_id == $store.state.station ? 'active' : ''"
           :title="item.station_id"
         >
           <p>{{ item.cn_name }}</p>
           <p class="en">{{ item.en_name }}</p>
+          <p class="daozhan">
+            预计到站{{
+              $store.state.trainInfo.train2.train_state.arrival_time
+            }}分钟
+          </p>
         </span>
         <img
           v-if="index < lineInfo.length - 1"
@@ -130,8 +136,8 @@ export default {
   border-top-right-radius: 40px;
   border: 1px solid #fff;
   box-sizing: border-box;
-  background: linear-gradient(to right, #28bd73, #28bd73);
-  // 红色 #BD3928
+  background: linear-gradient(to right, #01be00, #01be00);
+  // 红色 #c40001
   position: relative;
   .car-men {
     position: absolute;
@@ -150,34 +156,57 @@ export default {
     left: 210px;
   }
 }
-.active0-0 {
-  background: linear-gradient(to right, #28bd73, #28bd73);
-}
-.active0-1 {
-  background: linear-gradient(to right, #28bd73, #fac527);
-}
-.active0-2 {
-  background: linear-gradient(to right, #28bd73, #bd3928);
-}
-
-.active1-0 {
-  background: linear-gradient(to right, #fac527, #28bd73);
-}
 .active1-1 {
-  background: linear-gradient(to right, #fac527, #fac527);
+  background: linear-gradient(to right, #01be00, #01be00);
 }
 .active1-2 {
-  background: linear-gradient(to right, #fac527, #bd3928);
+  background: linear-gradient(to right, #01be00, #e28b00);
 }
+.active1-3 {
+  background: linear-gradient(to right, #01be00, #541911);
+}
+.active1-4 {
+  background: linear-gradient(to right, #01be00, #c40001);
+}
+//
 
-.active2-0 {
-  background: linear-gradient(to right, #bd3928, #28bd73);
-}
 .active2-1 {
-  background: linear-gradient(to right, #bd3928, #fac527);
+  background: linear-gradient(to right, #e28b00, #01be00);
 }
 .active2-2 {
-  background: linear-gradient(to right, #bd3928, #bd3928);
+  background: linear-gradient(to right, #e28b00, #e28b00);
+}
+.active2-3 {
+  background: linear-gradient(to right, #e28b00, #541911);
+}
+.active2-4 {
+  background: linear-gradient(to right, #e28b00, #c40001);
+}
+
+.active3-1 {
+  background: linear-gradient(to right, #541911, #01be00);
+}
+.active3-2 {
+  background: linear-gradient(to right, #541911, #e28b00);
+}
+.active3-3 {
+  background: linear-gradient(to right, #541911, #541911);
+}
+.active3-4 {
+  background: linear-gradient(to right, #541911, #c40001);
+}
+
+.active4-1 {
+  background: linear-gradient(to right, #c40001, #01be00);
+}
+.active4-2 {
+  background: linear-gradient(to right, #c40001, #e28b00);
+}
+.active4-3 {
+  background: linear-gradient(to right, #c40001, #541911);
+}
+.active4-4 {
+  background: linear-gradient(to right, #c40001, #c40001);
 }
 
 .pis-text-line {
@@ -295,6 +324,38 @@ export default {
       margin: 0 10px;
       vertical-align: middle;
     }
+  }
+  .pis-line-item {
+    position: relative;
+
+    .daozhan {
+      font-size: 14px;
+      background: #0d3d62;
+      position: absolute;
+      top: -24px;
+      left: -25px;
+      display: inline-block;
+      width: 130px;
+      padding: 2px 0;
+      z-index: 10;
+      display: none;
+    }
+    .daozhan::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 22px;
+      left: 63px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #0d3d62;
+      z-index: 1;
+    }
+  }
+  .pis-line-item.active .daozhan {
+    display: block;
   }
   .car-status {
     text-align: center;

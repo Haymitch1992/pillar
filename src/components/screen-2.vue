@@ -9,7 +9,7 @@
       </div>
       <div class="station-img-box">
         <!-- 首钢站 特殊显示 -->
-        <img
+        <!-- <img
           class="map-img"
           v-if="
             ($store.state.station === '11004' &&
@@ -19,8 +19,8 @@
           "
           src="../assets/map-7.png"
           alt=""
-        />
-        <img v-else class="map-img" src="../assets/map-3.png" alt="" />
+        /> -->
+        <img class="map-img" src="../assets/map-3.png" alt="" />
       </div>
     </div>
   </div>

@@ -30,8 +30,48 @@
         </span>
       </div>
       <div class="station-img-box">
+        <!-- 首钢 -->
+        <video
+          v-show="
+            $store.state.station === '11004' || $store.state.station === '11104'
+          "
+          class="showVideo"
+          src="http://172.51.215.158:8081/train/statics/video/4.mp4"
+          loop
+          autoplay
+        ></video>
+        <!-- 北辛安路 -->
+        <video
+          v-show="
+            $store.state.station === '11003' || $store.state.station === '11103'
+          "
+          class="showVideo"
+          src="http://172.51.215.158:8081/train/statics/video/3.mp4"
+          loop
+          autoplay
+        ></video>
+        <!-- 金安桥 -->
+        <video
+          v-show="
+            $store.state.station === '11002' || $store.state.station === '11102'
+          "
+          class="showVideo"
+          src="http://172.51.215.158:8081/train/statics/video/2.mp4"
+          loop
+          autoplay
+        ></video>
+        <!-- 金顶桥 -->
+        <video
+          v-show="
+            $store.state.station === '11001' || $store.state.station === '11101'
+          "
+          class="showVideo"
+          src="http://172.51.215.158:8081/train/statics/video/1.mp4"
+          loop
+          autoplay
+        ></video>
         <!-- 首钢站 特殊显示 -->
-        <img
+        <!-- <img
           class="map-img"
            v-if="
             ($store.state.station === '11004' &&
@@ -41,9 +81,9 @@
           "
           src="../assets/map-6.png"
           alt=""
-        />
-        <img class="map-img" v-else-if="showImg" src="../assets/map-1.png" alt="" />
-        <img class="map-img"  v-else-if="!showImg" src="../assets/map-4.png" alt="" />
+        /> -->
+        <!-- <img class="map-img" v-else-if="showImg" src="../assets/map-1.png" alt="" />
+        <img class="map-img"  v-else-if="!showImg" src="../assets/map-4.png" alt="" /> -->
       </div>
     </div>
   </div>
@@ -76,9 +116,9 @@ export default defineComponent({
     }
   },
   mounted() {
-    setInterval(() => {
-      this.showImg = !this.showImg;
-    }, 10000);
+    // setInterval(() => {
+    //   this.showImg = !this.showImg;
+    // }, 10000);
   }
 });
 </script>
@@ -95,5 +135,10 @@ export default defineComponent({
 }
 .station-title-box {
   padding-top: 90px;
+}
+.showVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
