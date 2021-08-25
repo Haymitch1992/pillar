@@ -7,6 +7,7 @@ export default createStore({
       down: {}
     },
     alertInfo: [],
+    emergencyState:false,
     trainInfo: {
       train1: {
         train_state: {
@@ -70,6 +71,9 @@ export default createStore({
       console.log('查看我要保存的数据',info)
        state.trainInfo.train1 = info.train1
       state.trainInfo.train2 = info.train2
+    },
+    setEmergencyState(state, status) {
+      state.emergencyState = status
     }
   },
   actions: {},

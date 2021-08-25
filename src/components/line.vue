@@ -133,7 +133,6 @@ export default {
     lineInfo() {
       // 获取上下行
       let lineObj = [];
-
       if (this.$store.state.direction == 1) {
         // 下行
         lineObj = this.$store.state.stationInfo.down;
