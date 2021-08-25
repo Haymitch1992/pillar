@@ -327,13 +327,12 @@ export default {
   }
   .pis-line-item {
     position: relative;
-
     .daozhan {
       font-size: 14px;
       background: #0d3d62;
       position: absolute;
       top: -24px;
-      left: -25px;
+      left: calc(50% - 65px);
       display: inline-block;
       width: 130px;
       padding: 2px 0;
