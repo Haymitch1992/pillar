@@ -10,13 +10,21 @@
           </span>
           <span class="tx3">Exit</span>
         </p>
-        <img class="arrow-img" src="../assets/arrow-all-icon.png" alt="" />
+         <div class="arrow-img-container">
+          <img src="../assets/danger-left-all-arrow.png" alt="" />
+          <img src="../assets/danger-right-all-arrow.png" alt="" />
+        </div>
         <h2 class="danger-text warning-text">水灾红色预警</h2>
         <div class="danger-box waring-box">
           <div class="danger-line"></div>
           <span>10分钟后水位</span>
         </div>
-
+        <img
+          class="danger-person inverted"
+          src="../assets/danger-person.png"
+          alt=""
+        />
+        <span class="current-wave current-wave-warning">当前水位</span>
         <wave class="wave"></wave>
       </div>
     </div>

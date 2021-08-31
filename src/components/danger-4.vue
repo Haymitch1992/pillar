@@ -13,6 +13,8 @@
           <div class="danger-line"></div>
           <span>5分钟后水位</span>
         </div>
+        <img class="danger-person" src="../assets/danger-person.png" alt="" />
+        <span class="current-wave">当前水位</span>
         <wave class="wave danger"></wave>
       </div>
     </div>

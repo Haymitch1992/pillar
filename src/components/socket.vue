@@ -148,14 +148,12 @@ export default {
         this.setStation(arr[0]);
       }
       // 修改应急状态 setEmergencyState
-      if (e.data === 'emergent') {
-        this.setEmergencyState(2);
+      if (e.data === 'emergent1') {
+        this.setEmergencyState(4); // danger
       } else if (e.data === 'recover') {
         this.setEmergencyState(1);
-      } else if (e.data === 'warning') {
-        this.setEmergencyState(3);
-      } else if (e.data === 'danger') {
-        this.setEmergencyState(4);
+      } else if (e.data === 'emergent3') {
+        this.setEmergencyState(3); // warning
       }
       // console.log('可以渲染网页数据...');
       // 消息获取成功，重置心跳
