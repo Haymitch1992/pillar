@@ -8,7 +8,7 @@
             <img src="../assets/people-left.png" alt="" />
             4min
           </span>
-          <span class="tx3">Exit</span>
+          <span class="tx3">EXIT</span>
         </p>
         <arrow-left-right></arrow-left-right>
       
@@ -16,7 +16,7 @@
         <h2 class="danger-text2 warning-text">Yellow Rainstorm Warning</h2>
         <div class="danger-box waring-box">
           <div class="danger-line"></div>
-          <span>预计最大水位</span>
+          <span>预计10min后最大水位</span>
         </div>
         <img
           class="danger-person inverted"
