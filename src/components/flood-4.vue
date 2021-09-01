@@ -7,14 +7,15 @@
         <p class="t2">
           No&nbsp;entry&nbsp;Please&nbsp;leave&nbsp;the&nbsp;station&nbsp;immediately
         </p>
-        <img class="arrow-img" src="../assets/stop-icon.png" alt="" />
-        <h2 class="danger-text warning-text">水灾红色预警</h2>
+        <img class="stop-icon" src="../assets/stop-icon.png" alt="" />
+        <h2 class="danger-text warning-text">暴雨黄色预警</h2>
+        <h2 class="danger-text2 warning-text">Yellow Rainstorm Warning</h2>
         <div class="danger-box waring-box">
           <div class="danger-line"></div>
-          <span>10分钟后水位</span>
+          <span>预计最大水位</span>
         </div>
         <img class="danger-person" src="../assets/danger-person.png" alt="" />
-        <span class="current-wave current-wave-warning">当前水位</span>
+        <!-- <span class="current-wave current-wave-warning">当前水位</span> -->
         <wave class="wave"></wave>
       </div>
     </div>

@@ -111,7 +111,7 @@
 <style>
 .wave {
   width: 620px;
-  height: 300px;
+  height: 350px;
   overflow: hidden;
   position: relative;
 }
@@ -157,7 +157,7 @@
 .wave-container {
   background: rgba(118, 218, 255, 1);
   width: 620px;
-  height: 300px;
+  height: 350px;
   display: block;
   position: relative;
   top: 130px;

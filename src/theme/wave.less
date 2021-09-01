@@ -3,8 +3,21 @@
 }
 .danger-text {
   color: #d40000;
-  font-size: 60px;
+  font-size: 50px;
   margin: 0;
+  position: relative;
+  top: -30px;
+}
+.stop-icon{
+  width: 240px;
+  margin: 40px auto 20px;
+}
+.danger-text2 {
+  color: #d40000;
+  font-size: 30px;
+  margin: 0;
+  position: relative;
+  top: -30px;
 }
 .warning-text {
   color: #ffff48;
@@ -21,6 +34,93 @@
   position: absolute;
   bottom: 0;
 }
+.arrow-container{
+  position: relative;
+}
+.lamplight{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: absolute;
+  background: #fff;
+  animation:shanguang 1s linear 1s infinite alternate both running
+}
+@keyframes shanguang{
+  0%{//start css
+    opacity: 1;
+  }
+  25%{//center css
+    opacity: 0;
+  }
+  50%{//center css
+    opacity: 1;
+  }
+  75%{//center css
+    opacity: 0;
+  }
+  100%{//end css
+    opacity: 1;
+  }
+}
+.lamplight-1{
+  top: 125px;
+  left: 160px;
+}
+.lamplight-2{
+  top: 125px;
+  left: 215px;
+}
+.lamplight-3{
+  top: 125px;
+  left: 270px;
+}
+.lamplight-4{
+  top: 125px;
+  left: 325px;
+}
+.lamplight-5{
+  top: 125px;
+  left: 380px;
+}
+.lamplight-6{
+  top: 125px;
+  left: 435px;
+}
+.lamplight-7{
+  top: 90px;
+  left: 186px;
+}
+.lamplight-8{
+  top: 62px;
+  left: 214px;
+}
+.lamplight-9{
+  top: 160px;
+  left: 186px;
+}
+.lamplight-10{
+  top: 184px;
+  left: 214px;
+}
+
+.lamplight-11{
+  top: 90px;
+  left: 412px;
+}
+.lamplight-12{
+  top: 62px;
+  left: 384px;
+}
+.lamplight-13{
+  top: 160px;
+  left: 412px;
+}
+.lamplight-14{
+  top: 184px;
+  left: 384px;
+}
+
 .arrow-img-container{
   text-align: center;
   height: 260px;
@@ -48,7 +148,7 @@
 .danger-box {
   width: 620px;
   position: absolute;
-  bottom: 320px;
+  bottom: 270px;
   .danger-line {
     width: 100%;
     border-top: 3px dashed salmon;
@@ -65,6 +165,7 @@
   }
 }
 .waring-box {
+  bottom: 220px;
   .danger-line {
     border-top: 3px dashed #ffff48;
   }
