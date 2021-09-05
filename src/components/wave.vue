@@ -5,6 +5,7 @@
       class="wave-container wave-container2"
       v-if="$store.state.emergencyState === 4"
     ></div>
+    <div class="wave-line"></div>
   </div>
 </template>
 <style>
@@ -72,5 +73,12 @@
   100% {
     left: -200px;
   }
+}
+.wave-line {
+  width: 100%;
+  height: 4px;
+  background: #ffff48;
+  position: absolute;
+  bottom: 240px;
 }
 </style>

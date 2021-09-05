@@ -104,10 +104,10 @@ export default {
   },
   computed: {
     direction() {
-      return this.$store.state.direction == 1 ? '金顶桥' : '首钢';
+      return this.$store.state.direction == 1 ? '模式口' : '新首钢';
     },
     directionEn() {
-      return this.$store.state.direction == 1 ? 'Jinding Qiao' : 'Shou Gang';
+      return this.$store.state.direction == 1 ? 'Moshi Kou' : 'Xinshou Gang';
     },
     lineInfo() {
       // 获取上下行
