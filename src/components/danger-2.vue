@@ -19,7 +19,7 @@
         <h2 class="danger-text2">Red Rainstorm Warning</h2>
         <div class="danger-box">
           <div class="danger-line"></div>
-          <span>预计5分钟后车站关闭</span>
+          <span>5分钟后车站关闭</span>
         </div>
         <img
           class="inverted danger-person"

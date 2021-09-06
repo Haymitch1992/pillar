@@ -61,6 +61,8 @@
           <span></span>
           <span></span>
         </div>
+        <span class="wendu wendu-1">24.5℃</span>
+        <span class="wendu wendu-2">24.5℃</span>
       </div>
       <!-- <img src="../assets/car-1.png" alt="" />
       <img src="../assets/car-2.png" alt="" /> -->
@@ -107,7 +109,7 @@ export default {
       return this.$store.state.direction == 1 ? '模式口' : '新首钢';
     },
     directionEn() {
-      return this.$store.state.direction == 1 ? 'Moshi Kou' : 'Xinshou Gang';
+      return this.$store.state.direction == 1 ? 'Moshi Kou' : 'Xin Shougang';
     },
     lineInfo() {
       // 获取上下行
@@ -127,6 +129,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.wendu {
+  font-size: 14px;
+}
+.wendu-1 {
+  position: absolute;
+  left: 14px;
+  top: 4px;
+}
+.wendu-2 {
+  position: absolute;
+  right: 14px;
+  top: 4px;
+}
 .car-container {
   width: 300px;
   height: 34px;
@@ -142,7 +157,7 @@ export default {
   .car-men {
     position: absolute;
     bottom: 0;
-    left: 60px;
+    left: 80px;
     span {
       display: inline-block;
       height: 20px;
@@ -153,7 +168,7 @@ export default {
     }
   }
   .car-men-1 {
-    left: 210px;
+    left: 180px;
   }
 }
 .active1-1 {
@@ -371,7 +386,7 @@ export default {
   .per-1 {
     position: absolute;
     bottom: 10px;
-    left: 235px;
+    left: 255px;
   }
   .pos-num-1 {
     position: absolute;
@@ -386,7 +401,7 @@ export default {
   .per-2 {
     position: absolute;
     bottom: 10px;
-    left: 385px;
+    left: 355px;
   }
 }
 </style>

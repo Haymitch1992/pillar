@@ -77,8 +77,8 @@
 .wave-line {
   width: 100%;
   height: 4px;
-  background: #ffff48;
   position: absolute;
   bottom: 240px;
+  border-bottom: 4px dashed #dba132;
 }
 </style>
