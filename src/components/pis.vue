@@ -64,12 +64,25 @@
         <span class="wendu wendu-1">24.5℃</span>
         <span class="wendu wendu-2">24.5℃</span>
       </div>
-      <!-- <img src="../assets/car-1.png" alt="" />
-      <img src="../assets/car-2.png" alt="" /> -->
-      <img class="per-1" src="../assets/person-2.png" alt="" />
-      <!-- <span class="pos-num-1">1</span>
-      <span class="pos-num-2">2</span> -->
-      <img class="per-2" src="../assets/person.png" alt="" />
+
+      <div class="per-1">
+        <img
+          src="../assets/person-2.png"
+          v-for="(item, index) in $store.state.trainInfo.train1
+            .carriage_state[0].crowding_degree"
+          :key="index"
+          alt=""
+        />
+      </div>
+      <div class="per-2">
+        <img
+          src="../assets/person-2.png"
+          v-for="(item, index) in $store.state.trainInfo.train1
+            .carriage_state[1].crowding_degree"
+          :key="index"
+          alt=""
+        />
+      </div>
     </div>
     <div class="car-info">
       <span class="fl-info">
@@ -385,7 +398,7 @@ export default {
   }
   .per-1 {
     position: absolute;
-    bottom: 10px;
+    bottom: 6px;
     left: 255px;
   }
   .pos-num-1 {
@@ -400,7 +413,7 @@ export default {
   }
   .per-2 {
     position: absolute;
-    bottom: 10px;
+    bottom: 6px;
     left: 355px;
   }
 }

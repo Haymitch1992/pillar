@@ -23,7 +23,7 @@ export default createStore({
           },
           {
               carriageId: 2,
-              crowding_degree: 0,
+              crowding_degree: 1,
               temperture: "23℃",
               barrier_free: true
           }
