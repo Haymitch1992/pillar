@@ -7,7 +7,7 @@ export default createStore({
       down: {}
     },
     alertInfo: [],
-    emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨
+    emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨 5一键开关站
     trainInfo: {
       train1: {
         train_state: {

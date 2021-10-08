@@ -70,6 +70,24 @@
       v-show="$store.state.emergencyState === 2"
     ></emergency4>
     <scroll-item></scroll-item>
+    <!-- 一键开关站 -->
+    <quick-open-station
+      class="item item-4"
+      v-show="$store.state.emergencyState == 5"
+    ></quick-open-station>
+    <quick-open-station
+      class="item item-3"
+      v-show="$store.state.emergencyState == 5"
+    ></quick-open-station>
+    <quick-open-station
+      class="item item-2"
+      v-show="$store.state.emergencyState == 5"
+    ></quick-open-station>
+    <quick-open-station
+      class="item item-1"
+      v-show="$store.state.emergencyState == 5"
+    ></quick-open-station>
+
     <snow></snow>
     <socket-item class="socket-item"></socket-item>
   </div>
@@ -98,6 +116,7 @@ import danger1 from '../components/danger-1.vue';
 import danger2 from '../components/danger-2.vue';
 import danger3 from '../components/danger-3.vue';
 import danger4 from '../components/danger-4.vue';
+import QuickOpenStation from '../components/quick-open-station.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -120,7 +139,8 @@ export default defineComponent({
     danger1,
     danger2,
     danger3,
-    danger4
+    danger4,
+    QuickOpenStation
   }
 });
 </script>
