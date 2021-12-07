@@ -9,7 +9,7 @@
     </div>
     <div class="screen-content">
       <div class="station-title-box">
-        <img class="tag-img" src="../assets/tag.png" alt="" />
+        <!-- <img class="tag-img" src="../assets/tag.png" alt="" /> -->
         <span
           class="tag-box"
           v-for="item in currentStation"
@@ -134,7 +134,8 @@ export default defineComponent({
   vertical-align: middle;
 }
 .station-title-box {
-  padding-top: 90px;
+  padding-top: 70px;
+  background: url('../assets/station-bg.jpg') no-repeat 0 0 !important;
 }
 .showVideo {
   display: block;

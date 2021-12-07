@@ -152,6 +152,8 @@ export default {
         this.setEmergencyState(4); // danger
       } else if (e.data === 'recover') {
         this.setEmergencyState(1);
+      } else if (e.data === 'waiting') {
+        this.setEmergencyState(5);
       } else if (e.data === 'emergent3') {
         this.setEmergencyState(3); // warning
       }
