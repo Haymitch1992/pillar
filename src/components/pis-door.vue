@@ -47,7 +47,6 @@
         </i>
       </div>
     </div>
-
     <!-- 10s秒间隔切换 -->
     <div v-if="showStatus">
       <div class="pis-background">
@@ -103,6 +102,7 @@ let store = useStore();
 const dangerText = ref('暴雨红色预警，请勿停留');
 const dangerEn = ref('Red Rainstorm Warning, No Loitering!');
 const loadgingText = ref('已启动一键开关站流程,请做好开关站保障工作');
+// 切换间隔 10s 还是希望长时间显示
 // const timer = setInterval(() => {
 //   if (new Date().getMinutes() % 2 === 0) {
 //     showStatus.value = false;
@@ -127,7 +127,6 @@ const lineInfo = computed(() => {
     // 上行
     lineObj = store.state.stationInfo.up;
   }
-
   return lineObj;
 });
 </script>
@@ -194,69 +193,6 @@ const lineInfo = computed(() => {
     font-size: 80px;
   }
 }
-.line-container {
-  position: absolute;
-  top: 300px;
-  left: 0;
-  width: 1920px;
-  .line-1 {
-    height: 20px;
-    background: #8080b5;
-  }
-  .line-2 {
-    height: 60px;
-    background: #1f1f4f;
-  }
-  .line-3 {
-    margin-top: 10px;
-    border-bottom: 10px dashed #1f1f4f;
-  }
-}
-.wendu {
-  font-size: 30px;
-}
-.wendu-1 {
-  position: absolute;
-  left: 64px;
-  top: 20px;
-}
-.wendu-2 {
-  position: absolute;
-  right: 64px;
-  top: 20px;
-}
-.car-container {
-  width: 1400px;
-  height: 80px;
-  display: block;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border: 1px solid #fff;
-  box-sizing: border-box;
-  background: linear-gradient(to right, #01be00, #01be00);
-  // 红色 #c40001
-  position: relative;
-  top: 20px;
-  .car-men {
-    position: absolute;
-    bottom: 0;
-    left: 360px;
-    width: 60px;
-    span {
-      display: inline-block;
-      height: 36px;
-      width: 24px;
-      background: #fff;
-      margin-right: 3px;
-      vertical-align: bottom;
-    }
-  }
-  .car-men.car-men-1 {
-    left: 940px;
-  }
-}
-
-//
 
 .pis-top {
   font-size: 54px;
@@ -298,20 +234,6 @@ const lineInfo = computed(() => {
   text-align: left;
   padding: 40px 60px;
   font-size: 20px;
-  .fl-info {
-    float: left;
-    font-size: 16px;
-    img {
-      margin: 0 4px;
-    }
-  }
-  .fr-info {
-    float: right;
-    font-size: 16px;
-    img {
-      margin: 0 4px;
-    }
-  }
   .current {
     color: #fc9a6a;
     margin: 0 20px;
@@ -421,17 +343,6 @@ const lineInfo = computed(() => {
   .tips {
     margin-left: 322px;
     font-size: 16px;
-  }
-
-  .pos-num-1 {
-    position: absolute;
-    bottom: 18px;
-    left: 170px;
-  }
-  .pos-num-2 {
-    position: absolute;
-    bottom: 18px;
-    left: 410px;
   }
 }
 </style>
