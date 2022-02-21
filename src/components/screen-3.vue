@@ -8,7 +8,7 @@
       ></guidance3>
     </div>
     <div class="screen-content">
-      <div class="station-title-box">
+      <div class="station-title-box station-title-container">
         <!-- <img class="tag-img" src="../assets/tag.png" alt="" /> -->
         <span
           class="tag-box"
@@ -27,6 +27,15 @@
           >
             {{ item.en_name }}
           </P>
+        </span>
+      </div>
+      <!-- 车门防夹 模块-->
+      <div class="door-model-container">
+        <span>上车人数：{{ $store.state.carDoor.inPeople }}</span>
+        <span>下车人数：{{ $store.state.carDoor.outPeople }}</span>
+        <span>
+          车门状态：{{ $store.state.carDoor.gap ? '异常' : '正常' }}
+          <i :class="{'door-error':$store.state.carDoor.gap}"></i>
         </span>
       </div>
       <div class="station-img-box">
@@ -134,12 +143,40 @@ export default defineComponent({
   vertical-align: middle;
 }
 .station-title-box {
-  padding-top: 70px;
-  background: url('../assets/station-bg.jpg') no-repeat 0 0 !important;
+  padding-top: 46px;
+  background: url('../assets/station-bg.jpg') no-repeat 0 -56px !important;
 }
 .showVideo {
   display: block;
   width: 100%;
   height: 100%;
+}
+.station-title-container {
+  height: 200px !important;
+}
+.door-model-container {
+  height: 50px;
+  color: #fff;
+  background: #17172c;
+  border-radius: 10px;
+  margin-top: 8px;
+  line-height: 50px;
+  span {
+    margin: 0 20px;
+    font-size: 18px;
+  }
+  i {
+    width: 16px;
+    height: 16px;
+    background: #01be00;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+    margin-top: 16px;
+  }
+  .door-error {
+    background: #ff0000;
+  }
 }
 </style>

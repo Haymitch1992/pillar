@@ -51,7 +51,8 @@ export default {
       'setDirection',
       'setStation',
       'setTainInfo',
-      'setEmergencyState'
+      'setEmergencyState',
+      'setCarDoorInfo'
     ]),
     afterGetTrainInfo(res) {
       // 更新车辆的数据
@@ -156,6 +157,20 @@ export default {
         this.setEmergencyState(5);
       } else if (e.data === 'emergent3') {
         this.setEmergencyState(3); // warning
+      } else {
+        // 判断字符串是否包含 outPeople
+        // gap=0&inPeople=0&outPeople=0
+        if (e.data.indexOf('outPeople') !== -1) {
+          let arr = e.data.split('&');
+          let gap = parseInt(arr[0].split('=')[1]);
+          let inPeople = arr[1].split('=')[1];
+          let outPeople = arr[2].split('=')[1];
+          this.setCarDoorInfo({
+            gap,
+            inPeople,
+            outPeople
+          });
+        }
       }
       // console.log('可以渲染网页数据...');
       // 消息获取成功，重置心跳

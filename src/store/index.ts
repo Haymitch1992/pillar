@@ -6,6 +6,11 @@ export default createStore({
       up: {},
       down: {}
     },
+    carDoor: {
+      gap: 0,
+      inPeople: 0,
+      outPeople:0
+    },
     alertInfo: [],
     emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨 5一键开关站
     trainInfo: {
@@ -55,6 +60,9 @@ export default createStore({
     // 001 是快车 002 是慢车
   },
   mutations: {
+    setCarDoorInfo(state, info) { 
+      state.carDoor = info
+    },
     setStationInfo(state, info) {
       state.stationInfo = info
     },
