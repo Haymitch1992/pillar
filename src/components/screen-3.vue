@@ -35,7 +35,7 @@
         <span>下车人数：{{ $store.state.carDoor.outPeople }}</span>
         <span>
           车门状态：{{ $store.state.carDoor.gap ? '异常' : '正常' }}
-          <i :class="{'door-error':$store.state.carDoor.gap}"></i>
+          <i :class="{ 'door-error': $store.state.carDoor.gap }"></i>
         </span>
       </div>
       <div class="station-img-box">
@@ -46,8 +46,9 @@
           "
           class="showVideo"
           src="http://172.51.215.158:8081/train/statics/video/4.mp4"
-          loop
-          autoplay
+          muted="muted"
+          loop="loop"
+          autoplay="autoplay"
         ></video>
         <!-- 北辛安路 -->
         <video
@@ -56,8 +57,9 @@
           "
           class="showVideo"
           src="http://172.51.215.158:8081/train/statics/video/3.mp4"
-          loop
-          autoplay
+          muted="muted"
+          loop="loop"
+          autoplay="autoplay"
         ></video>
         <!-- 金安桥 -->
         <video
@@ -66,8 +68,9 @@
           "
           class="showVideo"
           src="http://172.51.215.158:8081/train/statics/video/2.mp4"
-          loop
-          autoplay
+          muted="muted"
+          loop="loop"
+          autoplay="autoplay"
         ></video>
         <!-- 金顶桥 -->
         <video
@@ -76,8 +79,9 @@
           "
           class="showVideo"
           src="http://172.51.215.158:8081/train/statics/video/1.mp4"
-          loop
-          autoplay
+          muted="muted"
+          loop="loop"
+          autoplay="autoplay"
         ></video>
         <!-- 首钢站 特殊显示 -->
         <!-- <img
