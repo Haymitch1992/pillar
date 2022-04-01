@@ -5,7 +5,8 @@
     </div>
     <div class="screen-content">
       <div class="station-title-box">
-        <pis></pis>
+        <!-- <pis></pis> -->
+        <time-table></time-table>
       </div>
       <div class="station-img-box">
         <!-- 首钢站 特殊显示 -->
@@ -31,12 +32,14 @@
 </template>
 <script lang="ts">
 import guidance from '../components/guidance2.vue';
-import pis from '../components/pis.vue';
+// import pis from '../components/pis.vue';
+import timeTable from '../components/timeTable.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   components: {
     guidance,
-    pis
+    timeTable
+    // pis
   }
 });
 </script>

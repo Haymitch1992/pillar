@@ -30,14 +30,14 @@
         </span>
       </div>
       <!-- 车门防夹 模块-->
-      <div class="door-model-container">
+      <!-- <div class="door-model-container">
         <span>上车人数：{{ $store.state.carDoor.inPeople }}</span>
         <span>下车人数：{{ $store.state.carDoor.outPeople }}</span>
         <span>
           车门状态：{{ $store.state.carDoor.gap ? '异常' : '正常' }}
           <i :class="{ 'door-error': $store.state.carDoor.gap }"></i>
         </span>
-      </div>
+      </div> -->
       <div class="station-img-box">
         <!-- 首钢 -->
         <video
@@ -148,7 +148,7 @@ export default defineComponent({
 }
 .station-title-box {
   padding-top: 46px;
-  background: url('../assets/station-bg.jpg') no-repeat 0 -56px !important;
+  background: url('../assets/station-bg.jpg') no-repeat 0 0 !important;
 }
 .showVideo {
   display: block;
@@ -156,7 +156,8 @@ export default defineComponent({
   height: 100%;
 }
 .station-title-container {
-  height: 200px !important;
+  height: 258px !important;
+  padding-top: 60px;
 }
 .door-model-container {
   height: 50px;
