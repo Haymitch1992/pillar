@@ -61,31 +61,8 @@
             <img src="../assets/pis-line.png" alt="" />
           </div>
           <div class="pis-car car-status animate__animated animate__fadeInLeft">
-            <div class="pis-car-box">
-              <div class="pis-car-status">
-                <p>24.5℃</p>
-                <div
-                  class="crowding-line"
-                  :class="
-                    'crowding' +
-                    store.state.trainInfo.train1.carriage_state[0]
-                      .crowding_degree
-                  "
-                ></div>
-              </div>
-              <div class="pis-car-status">
-                <p>24.5℃</p>
-                <div
-                  class="crowding-line"
-                  :class="
-                    'crowding' +
-                    store.state.trainInfo.train1.carriage_state[1]
-                      .crowding_degree
-                  "
-                ></div>
-              </div>
-            </div>
-            <img class="car-img" src="../assets/pis-car.png" alt="" />
+            <!-- 引入车辆pis 模块 -->
+            <pis-item></pis-item>
           </div>
         </div>
       </div>
@@ -116,6 +93,7 @@ import 'animate.css';
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import loading from '../components/loading.vue';
+import pisItem from './pis.vue';
 let store = useStore();
 
 const doorErrorText = ref('如发生夹人事件，请立即按压站台两侧紧急停车按钮');

@@ -24,7 +24,7 @@
         <img class="map-img" src="../assets/map-3.png" alt="" />
         <div class="ar-mark">
           <img src="../assets/ar-mark.png" class="bounceIn" alt="" />
-          <p>AR线路图</p>
+          <p>AR线网图</p>
         </div>
       </div>
     </div>

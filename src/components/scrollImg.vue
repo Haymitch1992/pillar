@@ -55,7 +55,7 @@ export default {
           // 根据后缀进行切割
           this.imgList.push({
             url: item.image_url,
-            type: item.type,
+            type: item.type=== 'Model_behavior_func_fallDown'?'倒地':item.type,
             left: num + 100 * index,
             showType: showType
           });

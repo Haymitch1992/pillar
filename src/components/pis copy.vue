@@ -1,5 +1,48 @@
 <template>
-  <div class="pis-box">
+  <div class="pis">
+    <div class="pis-top">
+      <span>
+        <span class="pis-text-line">
+          <p>开往</p>
+          <P class="pis-text-p">To</P>
+        </span>
+        <span class="current pis-text-line">
+          <p>{{ direction }}</p>
+          <P class="pis-text-p">{{ directionEn }}</P>
+        </span>
+        方向
+      </span>
+      <span class="manche">
+        <p class="cn">普通车</p>
+        <p>Local</p>
+      </span>
+    </div>
+    <div class="tips-line">
+      <!-- 下行不显示 -->
+      <span class="current tips"></span>
+    </div>
+    <div class="pis-line">
+      <i v-for="(item, index) in lineInfo" :key="item.station_id">
+        <span
+          class="pis-line-item"
+          :class="item.station_id == $store.state.station ? 'active' : ''"
+          :title="item.station_id"
+        >
+          <p>{{ item.cn_name }}</p>
+          <p class="en">{{ item.en_name }}</p>
+          <p class="daozhan">
+            预计到站{{
+              $store.state.trainInfo.train2.train_state.arrival_time
+            }}分钟
+          </p>
+        </span>
+        <img
+          v-if="index < lineInfo.length - 1"
+          src="../assets/next-1.png"
+          alt=""
+        />
+      </i>
+    </div>
     <div class="car-status">
       <div
         class="car-container"
@@ -41,6 +84,29 @@
         />
       </div>
     </div>
+    <div class="car-info">
+      <span class="fl-info">
+        <span class="men-num">3-4</span>
+        <img class="men-img" src="../assets/pingbimen.png" alt="" />
+        <!--  -->
+        <div class="men-info" v-if="$store.state.direction == 0">
+          <p>普通车</p>
+          <p>Local</p>
+        </div>
+        <div class="men-info" v-if="$store.state.direction == 1">
+          <p>快车</p>
+          <p>Express</p>
+        </div>
+      </span>
+      <span class="fr-info">
+        <span class="men-num">1-2</span>
+        <img class="men-img" src="../assets/pingbimen.png" alt="" />
+        <div class="men-info">
+          <p>普通车</p>
+          <p>Local</p>
+        </div>
+      </span>
+    </div>
   </div>
 </template>
 <script>
@@ -77,27 +143,26 @@ export default {
 
 <style lang="less" scoped>
 .wendu {
-  font-size: 18px;
-  color: #fff;
+  font-size: 14px;
 }
 .wendu-1 {
   position: absolute;
   left: 14px;
-  top: 14px;
+  top: 4px;
 }
 .wendu-2 {
   position: absolute;
   right: 14px;
-  top: 14px;
+  top: 4px;
 }
 .car-container {
-  width: 600px;
-  height: 54px;
+  width: 300px;
+  height: 34px;
   display: block;
-  margin: 90px auto 0;
+  margin: 0 auto;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   box-sizing: border-box;
   background: linear-gradient(to right, #01be00, #01be00);
   // 红色 #c40001
@@ -105,18 +170,18 @@ export default {
   .car-men {
     position: absolute;
     bottom: 0;
-    left: 180px;
+    left: 80px;
     span {
       display: inline-block;
-      height: 30px;
-      width: 18px;
+      height: 20px;
+      width: 10px;
       background: #fff;
       margin-right: 2px;
       vertical-align: bottom;
     }
   }
   .car-men-1 {
-    left: 360px;
+    left: 180px;
   }
 }
 .active1-1 {
@@ -206,10 +271,10 @@ export default {
     font-size: 30px;
   }
 }
-.pis-box {
+.pis {
   color: #fff;
   text-align: left;
-  // padding: 20px;
+  padding: 20px;
   font-size: 20px;
   .fl-info {
     float: left;
@@ -323,8 +388,6 @@ export default {
     text-align: center;
     padding-bottom: 10px;
     position: relative;
-    width: 700px;
-    margin: 0 auto;
   }
   .tips-line {
     padding-top: 4px;
@@ -336,7 +399,7 @@ export default {
   .per-1 {
     position: absolute;
     bottom: 6px;
-    left: 205px;
+    left: 255px;
   }
   .pos-num-1 {
     position: absolute;
@@ -351,7 +414,7 @@ export default {
   .per-2 {
     position: absolute;
     bottom: 6px;
-    left: 465px;
+    left: 355px;
   }
 }
 </style>

@@ -15,7 +15,7 @@ const getTimeInf = () => {
   currentTimeNum.value = currentTime.getHours();
 };
 
-let timer: any = null;
+let timer: number | undefined = 123; // 定时器
 
 onMounted(() => {
   getTimeInf();
@@ -34,7 +34,6 @@ const calcTimeList = computed(() => {
   let pointer = 0;
   timeData.forEach((item, index) => {
     if (item.label === currentTimeNum.value) {
-      console.log('*******************', index);
       pointer = index;
     }
   });
