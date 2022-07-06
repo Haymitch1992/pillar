@@ -6,10 +6,10 @@ export default createStore({
       up: {},
       down: {}
     },
-    carDoor: {
-      gap: 0,
-      inPeople: 0,
-      outPeople:0
+    carDoor: { // 车门防夹
+      gap:0, //0正常 1夹人
+      inPeople: 0, // 上车人数
+      outPeople:0 // 下车人数
     },
     alertInfo: [],
     emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨 5一键开关站
@@ -37,7 +37,7 @@ export default createStore({
       train2: {
         train_state: {
           arrival_time: 2, //剩余到站时间
-          arrival_state: 0  // 2 未到达 ，1 即将到达 ，0已到达
+          arrival_state: 2  // 2 未到达 ，1 即将到达 ，0已到达
         },
         carriage_state:  [  // 车厢拥挤度
           {
