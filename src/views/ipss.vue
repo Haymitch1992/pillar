@@ -227,36 +227,31 @@
 
                 您在此 You're here
               </span>
+              <div v-show="$store.state.lamplight == 0">
+                <img src="../assets/empty.png" alt="" />
+              </div>
+              <div v-show="$store.state.lamplight != 0">
+                <img src="../assets/train3.png" alt="" />
+                <!-- 第二节 -->
+                <img src="../assets/train2.png" alt="" />
+                <!-- 第三节 -->
+                <img
+                  v-show="$store.state.lamplight == 1"
+                  src="../assets/train-1-1.png"
+                  alt=""
+                />
+                <img
+                  v-show="$store.state.lamplight == 2"
+                  src="../assets/train-1-2.png"
+                  alt=""
+                />
+                <img
+                  v-show="$store.state.lamplight == 3"
+                  src="../assets/train-1-3.png"
+                  alt=""
+                />
+              </div>
               <!-- 第一节 -->
-              <img src="../assets/train3.png" alt="" />
-              <!-- 第二节 -->
-              <img src="../assets/train2.png" alt="" />
-              <!-- 第三节 -->
-
-              <img
-                v-if="
-                  $store.state.trainInfo.train2.carriage_state[0]
-                    .crowding_degree == 0
-                "
-                src="../assets/train-1-1.png"
-                alt=""
-              />
-              <img
-                v-if="
-                  $store.state.trainInfo.train2.carriage_state[0]
-                    .crowding_degree == 1
-                "
-                src="../assets/train-1-2.png"
-                alt=""
-              />
-              <img
-                v-if="
-                  $store.state.trainInfo.train2.carriage_state[0]
-                    .crowding_degree == 2
-                "
-                src="../assets/train-1-3.png"
-                alt=""
-              />
             </div>
           </div>
           <div v-if="store.state.carDoor.gap === 1">
@@ -547,19 +542,19 @@
   transition: all 1s;
 }
 .current-train-item.text-4 {
-  left: -60px;
+  left: -100px;
   transition: all 1s;
 }
 .current-train-item.text-3 {
-  left: -20px;
+  left: -100px;
   transition: all 1s;
 }
 .current-train-item.text-2 {
-  left: 20px;
+  left: -40px;
   transition: all 1s;
 }
 .current-train-item.text-1 {
-  left: 60px;
+  left: 10px;
   transition: all 1s;
 }
 .current-train-item.text-0 {
@@ -772,7 +767,7 @@ import socketItem from '../components/socket.vue';
 import loading from '../components/loading.vue';
 import dayjs from 'dayjs';
 
-let timer = 123;
+
 let currentTime = ref();
 let daylist = [
   '星期日',
@@ -795,7 +790,7 @@ console.log(doorType);
 
 onMounted(() => {
   // 获取当前路由参数
-  timer = setInterval(() => {
+  let timer = setInterval(() => {
     // 获取当前时间
     let day = dayjs();
     currentTime.value =

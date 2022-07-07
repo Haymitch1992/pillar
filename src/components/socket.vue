@@ -52,7 +52,8 @@ export default {
       'setStation',
       'setTainInfo',
       'setEmergencyState',
-      'setCarDoorInfo'
+      'setCarDoorInfo',
+      'setLamplight'
     ]),
     afterGetTrainInfo(res) {
       // 更新车辆的数据
@@ -170,6 +171,14 @@ export default {
             inPeople,
             outPeople
           });
+        }
+        if (e.data.indexOf('lamplight') !== -1) {
+          let arr = e.data.split('&');
+          let gap = parseInt(arr[0].split('=')[1]);
+
+          this.setLamplight(
+            gap
+          );
         }
       }
       // console.log('可以渲染网页数据...');

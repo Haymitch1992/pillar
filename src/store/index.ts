@@ -58,8 +58,12 @@ export default createStore({
     direction: 1,// 上下行 0 上行 金顶街 => 首钢 // 1下行 首钢 => 金顶街
     station: '11104', // 当前车站
     // 001 是快车 002 是慢车
+    lamplight:0,
   },
   mutations: {
+    setLamplight(state, info) { 
+      state.lamplight = info
+    },
     setCarDoorInfo(state, info) { 
       state.carDoor = info
     },
