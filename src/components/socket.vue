@@ -82,6 +82,10 @@ export default {
           carriage_state: res.data.result.train_001.carriage_state
         };
       }
+      // 修改列车即将到达时间 删除0分钟的状态
+      if (train2.train_state.arrival_time == 0) {
+        train2.train_state.arrival_state = 1;
+      }
 
       this.setTainInfo({
         train1: train1,
@@ -176,9 +180,7 @@ export default {
           let arr = e.data.split('&');
           let gap = parseInt(arr[0].split('=')[1]);
 
-          this.setLamplight(
-            gap
-          );
+          this.setLamplight(gap);
         }
       }
       // console.log('可以渲染网页数据...');

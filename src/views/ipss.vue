@@ -11,10 +11,10 @@
             <li class="info-item line-11-theme">
               <div class="middle-text">
                 <p class="strong-text">开往</p>
-                <p class="small-text">to</p>
+                <p class="small-text">To</p>
               </div>
               <div class="middle-text">
-                <p class="strong-text color-1">{{ direction }}</p>
+                <p class="strong-text strong-text-1 color-1">{{ direction }}</p>
                 <p class="small-text color-1">{{ directionEn }}</p>
               </div>
             </li>
@@ -24,7 +24,9 @@
                 <p class="small-text">This station</p>
               </div>
               <div class="middle-text">
-                <p class="strong-text color-2">{{ currentStation.cn }}</p>
+                <p class="strong-text strong-text-1 color-2">
+                  {{ currentStation.cn }}
+                </p>
                 <p class="small-text color-2">{{ currentStation.en }}</p>
               </div>
             </li>
@@ -34,7 +36,7 @@
                 <p class="small-text">This train</p>
               </div>
               <div class="middle-text">
-                <p class="strong-text color-2">
+                <p class="strong-text strong-text-1 color-2">
                   <span
                     v-if="
                       $store.state.trainInfo.train2.train_state.arrival_state ==
@@ -95,10 +97,10 @@
             <li class="info-item line-empty-theme">
               <div class="middle-text">
                 <p class="strong-text">下次</p>
-                <p class="small-text">This train</p>
+                <p class="small-text">Next train</p>
               </div>
               <div class="middle-text">
-                <p class="strong-text">
+                <p class="strong-text strong-text-1">
                   {{
                     $store.state.trainInfo.train2.train_state.arrival_time + 5
                   }}分钟
@@ -125,6 +127,11 @@
                   :class="item.stationStatus ? 'active' : ''"
                 >
                   <!-- {{ item.stationStatus }} -->
+                  <i v-if="item.stationStatus" class="line-innear-arrow">
+                    <img src="../assets/line-arrow-3.png" alt="" />
+                    <img src="../assets/line-arrow-2.png" alt="" />
+                    <img src="../assets/line-arrow-1.png" alt="" />
+                  </i>
                 </span>
               </div>
               <span
@@ -157,8 +164,11 @@
                 v-for="(item, index) in lineInfo"
                 :key="item.station_id"
               >
-                <p>{{ item.cn_name }}</p>
-                <p class="small-text">{{ item.en_name }}</p>
+                <div class="staion-container">
+                  <p>{{ item.cn_name }}</p>
+                  <p class="small-text">{{ item.en_name }}</p>
+                </div>
+
                 <span class="transfer-item" v-if="item.transfer_line.length">
                   <span class="tramsfer-station tramsfer-station-1">S1</span>
                   <span class="tramsfer-station-3"></span>
@@ -323,6 +333,13 @@
 </template>
 
 <style lang="less" scoped>
+.line-innear-arrow {
+  position: relative;
+  top: 2px;
+  img {
+    margin: 0 20px;
+  }
+}
 .danger-box {
   position: relative;
   .left-arrow {
@@ -550,11 +567,11 @@
   transition: all 1s;
 }
 .current-train-item.text-2 {
-  left: -40px;
+  left: -100px;
   transition: all 1s;
 }
 .current-train-item.text-1 {
-  left: 10px;
+  left: -30px;
   transition: all 1s;
 }
 .current-train-item.text-0 {
@@ -616,7 +633,15 @@
   left: 1050px;
 }
 .active {
-  color: #32c17b;
+  // color: #32c17b;
+}
+.active .staion-container {
+  background-color: #32c17b;
+  color: #fff;
+  width: 130px;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding-bottom: 4px;
 }
 
 .line {
@@ -732,6 +757,9 @@
   .strong-text {
     font-size: 36px;
   }
+  .strong-text-1 {
+    font-weight: bold;
+  }
   .small-text {
     font-size: 16px;
     padding-top: 4px;
@@ -767,7 +795,6 @@ import socketItem from '../components/socket.vue';
 import loading from '../components/loading.vue';
 import dayjs from 'dayjs';
 
-
 let currentTime = ref();
 let daylist = [
   '星期日',
@@ -778,6 +805,7 @@ let daylist = [
   '星期五',
   '星期六'
 ];
+let daylistEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 let route = useRoute();
 let doorType = ref('1');
 if (route.query.door) {
@@ -794,7 +822,11 @@ onMounted(() => {
     // 获取当前时间
     let day = dayjs();
     currentTime.value =
-      day.format('YYYY-MM-DD HH:mm:ss') + ' ' + daylist[day.day()];
+      day.format('YYYY-MM-DD HH:mm:ss') +
+      ' ' +
+      daylist[day.day()] +
+      ' ' +
+      daylistEn[day.day()];
   }, 1000 * 1);
 });
 
