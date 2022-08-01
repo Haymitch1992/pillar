@@ -53,7 +53,8 @@ export default {
       'setTainInfo',
       'setEmergencyState',
       'setCarDoorInfo',
-      'setLamplight'
+      'setLamplight',
+      'setLineNumber'
     ]),
     afterGetTrainInfo(res) {
       // 更新车辆的数据
@@ -175,6 +176,11 @@ export default {
             inPeople,
             outPeople
           });
+        }
+        if (e.data.indexOf('lineNumber') !== -1) {
+          let arr = e.data.split('&');
+          let gap = parseInt(arr[0].split('=')[1]);
+          this.setLineNumber(gap);
         }
         if (e.data.indexOf('lamplight') !== -1) {
           let arr = e.data.split('&');

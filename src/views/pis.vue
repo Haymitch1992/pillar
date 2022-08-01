@@ -1,3 +1,4 @@
+<!-- 改版前的页面 -->
 <template>
   <!-- 新大楼车站pis屏幕  尺寸1920- 540-->
   <div class="pis-container">

@@ -53,9 +53,21 @@ export default {
         if (item.image_url) {
           let showType = item.image_url.indexOf('mp4') === -1 ? 'img' : 'video';
           // 根据后缀进行切割
+          var typeStr = '';
+          switch (item.type) {
+            case 'Model_goods_func_backpack':
+              typeStr = '遗留';
+              break;
+            case 'Model_behavior_func_fallDown':
+              typeStr = '倒地';
+              break;
+            default:
+              typeStr = item.type;
+              break;
+          }
           this.imgList.push({
             url: item.image_url,
-            type: item.type=== 'Model_behavior_func_fallDown'?'倒地':item.type,
+            type: typeStr,
             left: num + 100 * index,
             showType: showType
           });

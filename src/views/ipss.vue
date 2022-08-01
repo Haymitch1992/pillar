@@ -237,6 +237,9 @@
 
                 您在此 You're here
               </span>
+              <p class="line-number">
+                当前候车人数：{{ $store.state.lineNumber }} 人
+              </p>
               <div v-show="$store.state.lamplight == 0">
                 <img src="../assets/empty.png" alt="" />
               </div>
@@ -333,6 +336,12 @@
 </template>
 
 <style lang="less" scoped>
+.line-number {
+  position: absolute;
+  font-size: 32px;
+  left: 946px;
+  top: 366px;
+}
 .line-innear-arrow {
   position: relative;
   top: 2px;
@@ -818,7 +827,7 @@ console.log(doorType);
 
 onMounted(() => {
   // 获取当前路由参数
-  let timer = setInterval(() => {
+  setInterval(() => {
     // 获取当前时间
     let day = dayjs();
     currentTime.value =

@@ -11,6 +11,22 @@ export default createStore({
       inPeople: 0, // 上车人数
       outPeople:0 // 下车人数
     },
+    showItme:3,
+    perceptionData: {
+      picture_path: '',
+      gender: '',
+      age:''
+    },
+    passenger_records_data:{
+        man_num: 0,
+        girl_num: 0,
+        age_a: 0,  
+        age_b: 0,
+        age_c: 0,
+        age_d: 0,
+        age_e: 0
+    },
+    lineNumber:0,
     alertInfo: [],
     emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨 5一键开关站
     trainInfo: {
@@ -86,6 +102,18 @@ export default createStore({
     },
     setEmergencyState(state, status) {
       state.emergencyState = status
+    },
+    setLineNumber(state, status) { 
+      state.lineNumber = status
+    },
+    setPerceptionData(state, status) { 
+      state.perceptionData = status
+    },
+    setPassenger_records_data(state, status) { 
+      state.passenger_records_data = status
+    },
+    setShowItme(state, status) { 
+      state.showItme = status
     }
   },
   actions: {},
