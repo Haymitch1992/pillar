@@ -17,7 +17,6 @@
           />
         </div>
         <!-- 文字介绍 -->
-
         <div class="error-text">
           <p>性别：{{ $store.state.perceptionData.gender }}</p>
           <p>年龄：{{ $store.state.perceptionData.age }}</p>
@@ -30,11 +29,15 @@
         <echarts-item v-show="$store.state.showItme == 2"></echarts-item>
       </div>
       <div class="station-title-box" v-show="$store.state.showItme == 3">
-        <h2 class="info-title">通告 Notice Board</h2>
-        <p class="info-text">
-          各位乘客：2022年3月21日19时至4月5日24时，11号线模式口站B1、B2口封闭,在此期间，请您合理安排出行。
-        </p>
-        <time-table></time-table>
+        <advertsing-board
+          v-show="$store.state.recommend == 1"
+        ></advertsing-board>
+        <div v-show="$store.state.recommend == 0">
+          <h2 class="info-title">通告 Notice Board</h2>
+          <p class="info-text">
+            各位乘客：2022年3月21日19时至4月5日24时，11号线模式口站B1、B2口封闭,在此期间，请您合理安排出行。
+          </p>
+        </div>
       </div>
       <div class="station-img-box">
         <img
@@ -233,13 +236,17 @@ import { defineComponent } from 'vue';
 import guidance from '../components/guidance4.vue';
 import socketItem from '../components/socket-2.vue';
 import echartsItem from '../components/echarts.item.vue';
+import advertsingBoard from './advertsing-board.vue';
+import AdvertsingBoard from './advertsing-board.vue';
 
 export default defineComponent({
   name: 'screen4',
   components: {
     guidance,
     socketItem,
-    echartsItem
+    echartsItem,
+    advertsingBoard,
+    AdvertsingBoard
   }
 });
 </script>

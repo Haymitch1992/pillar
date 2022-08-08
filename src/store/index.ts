@@ -26,6 +26,7 @@ export default createStore({
         age_d: 0,
         age_e: 0
     },
+    recommend:1,
     lineNumber:0,
     alertInfo: [],
     emergencyState:1, // 1正常状态 2应急状态 3普通暴雨 4严重暴雨 5一键开关站
@@ -114,6 +115,9 @@ export default createStore({
     },
     setShowItme(state, status) { 
       state.showItme = status
+    },
+    setRecommend(state, status) { 
+      state.recommend = status
     }
   },
   actions: {},

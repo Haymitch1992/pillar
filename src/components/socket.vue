@@ -54,7 +54,8 @@ export default {
       'setEmergencyState',
       'setCarDoorInfo',
       'setLamplight',
-      'setLineNumber'
+      'setLineNumber',
+      'setRecommend'
     ]),
     afterGetTrainInfo(res) {
       // 更新车辆的数据
@@ -187,6 +188,12 @@ export default {
           let gap = parseInt(arr[0].split('=')[1]);
 
           this.setLamplight(gap);
+        }
+        if (e.data.indexOf('recommend') !== -1) {
+          let arr = e.data.split('&');
+          let gap = parseInt(arr[0].split('=')[1]);
+
+          this.setRecommend(gap);
         }
       }
       // console.log('可以渲染网页数据...');

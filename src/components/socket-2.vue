@@ -16,7 +16,7 @@ const heartCheck = {
     this.timer = setTimeout(() => {
       // console.log('发送心跳,后端收到后，返回一个心跳消息')
       // onmessage拿到返回的心跳就说明连接正常
-      ws.send(JSON.stringify({ heart: 1 }));
+      ws.send(JSON.stringify({ registerId: '12451', id: 'start' }));
       this.serverTimer = setTimeout(() => {
         // 如果超过一定时间还没响应(响应后触发重置)，说明后端断开了
         ws.close();
