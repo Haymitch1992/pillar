@@ -44,7 +44,8 @@ export default {
     ...mapMutations([
       'setPerceptionData',
       'setPassenger_records_data',
-      'setShowItme'
+      'setShowItme',
+      'setPictureBase'
     ]),
     reconnect() {
       console.log('尝试重连');
@@ -104,6 +105,17 @@ export default {
       if (e.data.indexOf('passenger_records') !== -1) {
         let obj = JSON.parse(e.data);
         this.setPassenger_records_data(obj.passenger_records_data);
+        // 10秒后
+      }
+      if (e.data.indexOf('picture_base_64') !== -1) {
+        let obj = JSON.parse(e.data);
+        console.log('获取到的图像', obj);
+        //
+        this.setPictureBase({
+          url: obj.picture_base_64,
+          type: obj.picture_type
+        });
+        // this.setPassenger_records_data();
         // 10秒后
       }
       heartCheck.start(this.socket);

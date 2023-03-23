@@ -17,6 +17,10 @@ export default createStore({
       gender: '',
       age:''
     },
+    pictureBase:{
+      url: '',
+      type:''
+    },
     passenger_records_data:{
         man_num: 0,
         girl_num: 0,
@@ -118,6 +122,9 @@ export default createStore({
     },
     setRecommend(state, status) { 
       state.recommend = status
+    },
+    setPictureBase(state, status) { 
+      state.pictureBase = status
     }
   },
   actions: {},
