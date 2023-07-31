@@ -69,6 +69,7 @@
       class="item item-1"
       v-show="$store.state.emergencyState === 2"
     ></emergency4>
+    <!-- 滚动屏 -->
     <scroll-item></scroll-item>
     <!-- 一键开关站 -->
     <quick-open-station

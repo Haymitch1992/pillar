@@ -18,7 +18,24 @@
 
 <script setup lang="ts">
 import { useStore } from 'vuex';
-import { watch, ref, reactive, defineEmits } from 'vue';
+import { watch, ref, reactive, defineEmits, onMounted } from 'vue';
+import { GETPERCEPTIONALARM } from '../services/user';
+
+onMounted(() => {
+  console.log('执行轮询');
+  setInterval(() => {
+    getInfo();
+  }, 5000);
+});
+// 轮询请求手动召援
+const getInfo = () => {
+  GETPERCEPTIONALARM().then((res) => {
+    // 有数据
+    if (res.data.result && res.data.result.abnormal_info.length !== 0) {
+      addList(res.data.result.abnormal_info);
+    }
+  });
+};
 
 const emit = defineEmits<{
   (event: 'changeStatus', str: boolean): void;
